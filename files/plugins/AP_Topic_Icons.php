@@ -35,17 +35,24 @@ else
 // Tell admin_loader.php that this is indeed a plugin and that it is loaded
 define( 'PUN_PLUGIN_LOADED', 1 );
 
-// Load cached post_icon
-if (file_exists(FORUM_CACHE_DIR.'cache_post_icon.php'))
-  include FORUM_CACHE_DIR.'cache_topic_icon.php';
-
-if ( !defined('PUN_TOPIC_ICON_LOADED') )
+/// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 {
-  require_once PUN_ROOT.'include/cache.php';
-  require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
+    {
+      require_once PUN_ROOT.'include/cache.php';
+    }
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
-  generate_topic_icon_cache();
-  include FORUM_CACHE_DIR.'cache_topic_icon.php';
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
 }
 
 //
@@ -55,9 +62,9 @@ if ( isset( $_POST['edit_icon'] ) )
 {
   $updated = FALSE;
 
-  if ( isset( $post_icons[$_POST['icon_id']] ) )
+  if ( isset( $topic_icons[$_POST['icon_id']] ) )
   {
-    $icon = $post_icons[$_POST['icon_id']];
+    $icon = $topic_icons[$_POST['icon_id']];
     if ( $_POST['icon_name'] != $icon['name'] OR $_POST['filename'] != $icon['filename'] )
     {
       $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_name'] ) )."', `filename` = '".$db->escape( pun_htmlspecialchars($_POST['filename'] ) )."' WHERE `id` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_id'] ) )."'";
@@ -70,11 +77,11 @@ if ( isset( $_POST['edit_icon'] ) )
 
   if ( $updated )
   {
-    // Regenerate the post_icons cache
+    // Regenerate the topic_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
     generate_topic_icon_cache();
-    redirect( PLUGIN_URL, $lang_ti['data saved'] );
+    redirect( PLUGIN_URL, $lang_ti['your icon has been changed'] );
   }
 } // end edit_icon
 
@@ -99,32 +106,32 @@ if ( isset( $_POST['add_icon'] ) )
 
   if ( $updated )
   {
-    // Regenerate the post_icons cache
+    // Regenerate the topic_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
     generate_topic_icon_cache();
     redirect( PLUGIN_URL, $lang_ti['data saved'] );
   }
-} // end edit_icon
+} // End add icon
 
 // Delete the icon from the database
 if ( isset( $_POST['delete_icon'] ) )
 {
   $updated = FALSE;
 
-  if ( isset( $post_icons[$_POST['id']] ) )
+  if ( isset( $topic_icons[$_POST['id']] ) )
   {
-    $icon = $post_icons[$_POST['id']];
+    $icon = $topic_icons[$_POST['id']];
 
-    // Delete the icon from the database
+    // Delete the topic icon from the database
     $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$db->escape( $_POST['id'] )."'";
     $db->query( $query ) or error( 'Unable to delete icon from table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
     // Delete the file icon
-    $d = dir( PUN_ROOT.'/plugins/topic-icon/icons/');
+    $d = dir( PUN_ROOT.'/plugins/topic-icon/icons/' );
     while ( ( $entry = $d->read() ) !== false )
     {
-      if ( $entry == $icon['filename'] )
+      if ( $entry === $icon['filename'] )
         @unlink( PUN_ROOT.'/plugins/topic-icon/icons/'.$entry );
     }
     $d->close();
@@ -135,11 +142,11 @@ if ( isset( $_POST['delete_icon'] ) )
 
   if ( $updated )
   {
-    // Regenerate the post_icons cache
+    // Regenerate the topic_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
     generate_topic_icon_cache();
-    redirect( PLUGIN_URL, $lang_ti['data saved'] );
+    redirect( PLUGIN_URL, $lang_ti['your icon has been deleted'] );
   }
 } // end delete_icon
 
@@ -304,9 +311,9 @@ else
       <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
         <thead>
           <tr>
-            <th>Icon</th>
-            <th>Image</th>
-            <th>Controls</th>
+            <th><?php echo $lang_ti['icon'] ?></th>
+            <th><?php echo $lang_ti['name'] ?></th>
+            <th><?php echo $lang_ti['controls'] ?></th>
           </tr>
         </thead>
           <?php
@@ -348,9 +355,9 @@ else
       <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
         <thead>
         <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Controls</th>
+          <th><?php echo $lang_ti['icon'] ?></th>
+          <th><?php echo $lang_ti['name'] ?></th>
+          <th><?php echo $lang_ti['controls'] ?></th>
         </tr>
         </thead>
           <?php
@@ -367,7 +374,7 @@ else
             <?php echo $value['name'] ?>
           </td>
           <td>
-            <a href="<?php echo PLUGIN_URL.'&amp;mode=edit&amp;id='.$key ?>">Edit</a> | <a href="<?php echo PLUGIN_URL.'&amp;mode=delete&amp;id='.$key ?>">Delete</a>
+            <a href="<?php echo PLUGIN_URL.'&amp;mode=edit&amp;id='.$key ?>"><?php echo $lang_ti['edit'] ?></a> | <a href="<?php echo PLUGIN_URL.'&amp;mode=delete&amp;id='.$key ?>"><?php echo $lang_ti['delete'] ?></a>
           </td>
         </tr>
 

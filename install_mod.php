@@ -107,7 +107,7 @@ function install()
   // generate the post_icons cache
   require_once PUN_ROOT.'include/cache.php';
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-  generate_post_icon_cache();
+  generate_topic_icon_cache();
 }
 
 // This following function will be called when the user presses the "Restore" button (only if $mod_restore is true (see above))
@@ -124,7 +124,7 @@ function restore()
   // Clear the post_icons cache
   require_once PUN_ROOT.'include/cache.php';
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-  clear_post_icons_cache();
+  clear_topic_icons_cache();
 }
 
 /***********************************************************************/
