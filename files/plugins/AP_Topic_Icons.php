@@ -44,7 +44,7 @@ if ( !defined('PUN_TOPIC_ICON_LOADED') )
   require_once PUN_ROOT.'include/cache.php';
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
-  generate_post_icon_cache();
+  generate_topic_icon_cache();
   include FORUM_CACHE_DIR.'cache_topic_icon.php';
 }
 
@@ -73,7 +73,7 @@ if ( isset( $_POST['edit_icon'] ) )
     // Regenerate the post_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-    generate_post_icon_cache();
+    generate_topic_icon_cache();
     redirect( PLUGIN_URL, $lang_ti['data saved'] );
   }
 } // end edit_icon
@@ -102,7 +102,7 @@ if ( isset( $_POST['add_icon'] ) )
     // Regenerate the post_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-    generate_post_icon_cache();
+    generate_topic_icon_cache();
     redirect( PLUGIN_URL, $lang_ti['data saved'] );
   }
 } // end edit_icon
@@ -118,7 +118,7 @@ if ( isset( $_POST['delete_icon'] ) )
 
     // Delete the icon from the database
     $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$db->escape( $_POST['id'] )."'";
-    $db->query( $query ) or error( 'Unable to delete icon from tabletopic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
+    $db->query( $query ) or error( 'Unable to delete icon from table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
     // Delete the file icon
     $d = dir( PUN_ROOT.'/plugins/topic-icon/icons/');
@@ -138,7 +138,7 @@ if ( isset( $_POST['delete_icon'] ) )
     // Regenerate the post_icons cache
     require_once PUN_ROOT.'include/cache.php';
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-    generate_post_icon_cache();
+    generate_topic_icon_cache();
     redirect( PLUGIN_URL, $lang_ti['data saved'] );
   }
 } // end delete_icon
@@ -242,13 +242,13 @@ elseif ( $_GET['mode'] == 'delete' )
 ?>
 
 <div id="delete_icon" class="blockform">
-  <h2 class="block2"><span><?php echo $lang_ti['delete post icon'] ?></span></h2>
+  <h2 class="block2"><span><?php echo $lang_ti['delete topic icon'] ?></span></h2>
   <div class="box">
     <div class="inform">
       <form id="post_icon" method="post" action="<?php echo PLUGIN_URL ?>">
         <input id="id" name="id" type="hidden" value="<?php echo $id ?>" />
         <p>
-          Weet je zeker dat je de volgende icoon wilt verwijderen?
+          <?php echo $lang_ti['delete topic icon confirm'] ?>
           <img src="<?php echo get_base_url(true).'/plugins/topic-icon/icons/'.$icon['filename'] ?>" alt="<?php echo $icon['name'] ?>" />
         </p>
         <p class="submittop">

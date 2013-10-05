@@ -17,7 +17,7 @@ else
 
 if ( $topic_icon != '0' AND !array_key_exists( $topic_icon, $topic_icons ) )
 {
-  echo '<span style="color: red">Your topic icon does not exist anymore...</span><br />';
+  echo '<span style="color: red">'.$lang_ti['your topic icon does not exist anymore'].'</span><br />';
   $topic_icon = '0';
 }
 

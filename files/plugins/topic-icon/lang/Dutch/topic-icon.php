@@ -12,32 +12,32 @@
 **/
 
 $lang_ti = array(
-'topic icon'           =>  'Topic icon',
-'topic icon info'      =>  'Met deze mod kun je een icoon voor de titel van het eerste bericht  van de topic zetten.',
-'add new topic icon info'  =>  'Als je een nieuwe icoon wilt toevoegen, kopieer hem dan naar "<strong>/plugins/topic-icon/icons/</strong>" en ververs deze pagina.',
+'topic icon'                              =>  'Topic icon',
+'topic icon info'                         =>  'Met deze mod kun je een icoon voor de titel van het eerste bericht  van de topic zetten.',
+'add new topic icon info'                 =>  'Als je een nieuwe icoon wilt toevoegen, kopieer hem dan naar "<strong>/plugins/topic-icon/icons/</strong>" en ververs deze pagina.',
 
-'topic icons'          =>  'Topic iconen',
-'edit topic icon'      =>  'Bewerk topic icoon',
-'add topic icon'       =>  'Voeg nieuw topic icoon toe',
-'delete topic icon'    =>  'Verwijder topic icoon',
+'topic icons'                             =>  'Topic iconen',
+'edit topic icon'                         =>  'Bewerk topic icoon',
+'add topic icon'                          =>  'Voeg nieuw topic icoon toe',
+'delete topic icon'                       =>  'Verwijder topic icoon',
+'delete topic icon confirm'               =>  'Weet je zeker dat je de volgende icoon wilt verwijderen?',
+'name'                                    =>  'Naam',
+'name info'                               =>  'Dit is de naam voor het topic icoon zoals gebruikers hem zullen zien.',
+'icon'                                    =>  'Icoon',
+'icon info'                               =>  'Dit is het topic icoon afbeelding.',
+'your topic icon does not exist anymore'  => 'Jouw topic icoon bestaat niet meer...',
+'no icon'                                 =>  'Geen icoon',
+'icon does not exist'                     =>  'Deze icoon bestaat niet!!!',
+'forgot something'                        =>  'Je bent vergeten wat in te vullen, ga terug en verander het',
 
-'name'                =>  'Naam',
-'name info'           =>  'Dit is de naam voor het post icoon zoals gebruikers hem zullen zien.',
-'icon'                =>  'Icoon',
-'icon info'           =>  'Dit is het post icoon afbeelding.',
+'mode does not exist'                     =>  'Die mode bestaat niet.',
 
-'no icon'							=>	'Geen icoon',
-'icon does not exist' =>  'Deze icoon bestaat niet!!!',
-'forgot something'    =>  'Je bent vergeten wat in te vullen, ga terug en verander het',
+'new topic icons'                         =>  'Nieuwe topic icon',
+'new topic icons info'                    =>  'De volgende iconen zijn nog niet toegevoegd aan de database.',
 
-'mode does not exist' =>  'Die mode bestaat niet.',
-
-'new topic icons'      =>  'Nieuwe topic icon',
-'new topic icons info' =>  'De volgende iconen zijn nog niet toegevoegd aan de database.',
-
-'save icon'           =>  'Icoon opslaan',
-'add new icon'        =>  'Nieuwe icoon toevoegen',
-'delete icon'         =>  'Icoon verwijderen',
-'data saved'          =>  'Je opties zijn opgeslagen',
+'save icon'                               =>  'Icoon opslaan',
+'add new icon'                            =>  'Nieuwe icoon toevoegen',
+'delete icon'                             =>  'Icoon verwijderen',
+'data saved'                              =>  'Je opties zijn opgeslagen',
 
 );

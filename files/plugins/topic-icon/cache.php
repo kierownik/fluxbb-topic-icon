@@ -25,7 +25,7 @@ if (!defined('PUN'))
 //
 // Generate the config cache PHP script
 //
-function generate_post_icon_cache()
+function generate_topic_icon_cache()
 {
 	global $db;
 
@@ -44,7 +44,7 @@ function generate_post_icon_cache()
 //
 // Delete all feed caches
 //
-function clear_post_icons_cache()
+function clear_topic_icons_cache()
 {
 	$d = dir(FORUM_CACHE_DIR);
 	while (($entry = $d->read()) !== false)
