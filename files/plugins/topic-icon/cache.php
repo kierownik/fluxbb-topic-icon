@@ -54,3 +54,27 @@ function clear_post_icons_cache()
 	}
 	$d->close();
 }
+
+//
+// Safely write out a cache file.
+//
+if ( !function_exists( 'fluxbb_write_cache_file' ) )
+{
+	function fluxbb_write_cache_file($file, $content)
+	{
+		$fh = @fopen(FORUM_CACHE_DIR.$file, 'wb');
+		if (!$fh)
+			error('Unable to write cache file '.pun_htmlspecialchars($file).' to cache directory. Please make sure PHP has write access to the directory \''.pun_htmlspecialchars(FORUM_CACHE_DIR).'\'', __FILE__, __LINE__);
+
+		flock($fh, LOCK_EX);
+		ftruncate($fh, 0);
+
+		fwrite($fh, $content);
+
+		flock($fh, LOCK_UN);
+		fclose($fh);
+
+		if (function_exists('apc_delete_file'))
+			@apc_delete_file(FORUM_CACHE_DIR.$file);
+	}
+}
