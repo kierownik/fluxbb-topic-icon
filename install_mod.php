@@ -33,78 +33,108 @@ function install()
 {
   global $db, $pun_config;
 
-  // Schema to create the topic_icon table
-  $schema = array(
-    'FIELDS'      => array(
-      'id'        => array(
-        'datatype'      => 'SERIAL',
-        'allow_null'      => false
-      ),
-      'name'   => array(
-        'datatype'      => 'VARCHAR( 200 )',
-        'allow_null'    => false
-      ),
-      'filename'   => array(
-        'datatype'      => 'VARCHAR( 200 )',
-        'allow_null'    => false
-      )
-    ),
-      'PRIMARY KEY'   => array( 'id' ),
-      'INDEXES'     => array(
-        'name_idx' => array( 'name' )
-    )
-  );
-
-  // Create the topic_icon table
-  $db->create_table( 'topic_icon', $schema ) or error( 'Unable to create table "topic_icon"', __FILE__, __LINE__, $db->error() );
-
-  // All the icons in one array to insert into the topic_icon table
-  $topic_icons = array(
-    'Big Grin'    => 'biggrin.png',
-    'Bug'         => 'bug.png',
-    'Cake'        => 'cake.png',
-    'Camera'      => 'camera.png',
-    'Cancel'      => 'cancel.png',
-    'Cd'          => 'cd.png',
-    'Clock'       => 'clock.png',
-    'Cog'         => 'cog.png',
-    'Comment'     => 'comment.png',
-    'Css'         => 'css.png',
-    'Database'    => 'database.png',
-    'Exclamation' => 'exclamation.png',
-    'Heart'       => 'heart.png',
-    'Information' => 'information.png',
-    'Lightbulb'   => 'lightbulb.png',
-    'Music'       => 'music.png',
-    'Photo'       => 'photo.png',
-    'Php'         => 'php.png',
-    'Question'    => 'question.png',
-    'Sad'         => 'sad.png',
-    'Shocked'     => 'shocked.png',
-    'Smile'       => 'smile.png',
-    'Star'        => 'star.png',
-    'Thumbs Down' => 'thumb_down.png',
-    'Thumbs Up'   => 'thumb_up.png',
-    'Tongue'      => 'tongue.png',
-    'Video'       => 'video.png',
-    'Wink'        => 'wink.png',
-  );
-
-  // Loop thru the $topic_icons array to add them to the post_icon table
-  foreach ( $topic_icons AS $key => $value )
+  // Begin create the topic_icon table and populate it
+  if ( !$db->table_exists( 'topic_icon', TRUE ) )
   {
-    $db->query( "INSERT INTO ".$db->prefix."topic_icon ( name, filename ) VALUES ( '$key', '$value' ) " ) or error( 'Unable to add "'.$key.'" to topic_icon table', __FILE__, __LINE__, $db->error() );
+    // Schema to create the topic_icon table
+    $schema = array(
+      'FIELDS'      => array(
+        'id'        => array(
+          'datatype'      => 'SERIAL',
+          'allow_null'      => false
+        ),
+        'name'   => array(
+          'datatype'      => 'VARCHAR( 200 )',
+          'allow_null'    => false
+        ),
+        'filename'   => array(
+          'datatype'      => 'VARCHAR( 200 )',
+          'allow_null'    => false
+        )
+      ),
+        'PRIMARY KEY'   => array( 'id' ),
+        'INDEXES'     => array(
+          'name_idx' => array( 'name' )
+      )
+    );
+
+    // Create the topic_icon table
+    $db->create_table( 'topic_icon', $schema ) or error( 'Unable to create table "topic_icon"', __FILE__, __LINE__, $db->error() );
+
+    // All the icons in one array to insert into the topic_icon table
+    $topic_icons = array(
+      'Big Grin'    => 'biggrin.png',
+      'Bug'         => 'bug.png',
+      'Cake'        => 'cake.png',
+      'Camera'      => 'camera.png',
+      'Cancel'      => 'cancel.png',
+      'Cd'          => 'cd.png',
+      'Clock'       => 'clock.png',
+      'Cog'         => 'cog.png',
+      'Comment'     => 'comment.png',
+      'Css'         => 'css.png',
+      'Database'    => 'database.png',
+      'Exclamation' => 'exclamation.png',
+      'Heart'       => 'heart.png',
+      'Information' => 'information.png',
+      'Lightbulb'   => 'lightbulb.png',
+      'Music'       => 'music.png',
+      'Photo'       => 'photo.png',
+      'Php'         => 'php.png',
+      'Question'    => 'question.png',
+      'Sad'         => 'sad.png',
+      'Shocked'     => 'shocked.png',
+      'Smile'       => 'smile.png',
+      'Star'        => 'star.png',
+      'Thumbs Down' => 'thumb_down.png',
+      'Thumbs Up'   => 'thumb_up.png',
+      'Tongue'      => 'tongue.png',
+      'Video'       => 'video.png',
+      'Wink'        => 'wink.png',
+    );
+
+    // Loop thru the $topic_icons array to add them to the topic_icon table
+    foreach ( $topic_icons AS $key => $value )
+    {
+      $db->query( "INSERT INTO ".$db->prefix."topic_icon ( name, filename ) VALUES ( '$key', '$value' ) " ) or error( 'Unable to add "'.$key.'" to topic_icon table', __FILE__, __LINE__, $db->error() );
+    }
   }
+  // End create the topic_icon table and populate it
 
-  $allow_null = TRUE;
-  $default_value = '0';
-  $after_field = 'poster';
+  // Begin add a new field to the topics table to hold the id of the icon
+  if ( !$db->field_exists( 'topics', 'topic_icon', TRUE ) )
+  {
+    $allow_null = TRUE;
+    $default_value = '0';
+    $after_field = 'poster';
 
-  // Add a new field to the posts table to hold the id of the icon
-  $db->add_field( 'topics', 'topic_icon', 'int', $allow_null, $default_value, $after_field ) or error( 'Unable to add column "topic_icon" to table "topics"', __FILE__, __LINE__, $db->error() );
+    $db->add_field( 'topics', 'topic_icon', 'int', $allow_null, $default_value, $after_field ) or error( 'Unable to add column "topic_icon" to table "topics"', __FILE__, __LINE__, $db->error() );
+  }
+  // End add a new field to the topics table to hold the id of the icon
 
-  // generate the topic_icons cache
+  // Begin check if "o_topic_icons" exist in the config table
+  $sql = 'SELECT * FROM ".$db->prefix."config WHERE conf_name="o_topic_icon"';
+
+  if ( $db->fetch_row( $sql ) )
+  {
+    // Begin add options to the config table
+    $topic_icon_config = array(
+      'icons_in_a_row'  => '7',
+    );
+
+    // Serialize the new config
+    $topic_icon_config = serialize( $topic_icon_config );
+
+    // Insert the new config in the new config field
+    $db->query( "INSERT INTO ".$db->prefix."config (conf_name, conf_value) VALUES ( 'o_topic_icon', '".$db->escape( $topic_icon_config )."' ) " ) or error( 'Unable to add "o_topic_icon" to config table', __FILE__, __LINE__, $db->error() );
+    // End add options to the config table
+  }
+  // End check if "o_topic_icons" exist in the config table
+
+  // generate the topic_icons cache and config cache
   require_once PUN_ROOT.'include/cache.php';
+  generate_config_cache();
+
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
   generate_topic_icon_cache();
 }
@@ -114,14 +144,34 @@ function restore()
 {
   global $db, $db_type, $pun_config;
 
-  // Drop the field post_icon from the posts table
-  $db->drop_field( 'topics', 'topic_icon' ) or error( 'Unable to drop column "topic_icon" from table "topics"', __FILE__, __LINE__, $db->error() );
+  // Begin drop the field topic_icon from the topics table
+  if ( $db->field_exists( 'topics', 'topic_icon', TRUE ) )
+  {
+    $db->drop_field( 'topics', 'topic_icon' ) or error( 'Unable to drop column "topic_icon" from table "topics"', __FILE__, __LINE__, $db->error() );
+  }
+  // End drop the field topic_icon from the topics table
 
-  // Drop the table post_icon
-  $db->drop_table( 'topic_icon' ) or error( 'Unable to drop table "topic_icon"', __FILE__, __LINE__, $db->error() );
+  // Drop the table topic_icon
+  if ( $db->table_exists( 'topic_icon', TRUE ) )
+  {
+    $db->drop_table( 'topic_icon' ) or error( 'Unable to drop table "topic_icon"', __FILE__, __LINE__, $db->error() );
+  }
+  // End drop the table topic_icon
 
-  // Clear the topic_icons cache
+  // Begin check if "o_topic_icons" exist in the config table
+  $sql = 'SELECT o_topic_icons FROM '.$db->prefix.'config';
+
+  if ( $db->fetch_row( $sql ) )
+  {
+    // Delete the "o_topic_icon" from the config table
+    $db->query( 'DELETE FROM '.$db->prefix.'config WHERE conf_name = "o_topic_icon"' ) or error( 'Unable to delete "o_topic_icon" from config table', __FILE__, __LINE__, $db->error() );
+  }
+  // End check if "o_topic_icons" exist in the config table
+
+  // Clear the topic_icons cache and config cache
   require_once PUN_ROOT.'include/cache.php';
+  generate_config_cache();
+
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
   clear_topic_icons_cache();
 }
@@ -173,6 +223,8 @@ if ( isset( $_POST['form_sent'] ) )
   <div class="box">
     <div class="inbox">
       <p>Your database has been successfully prepared for <?php echo pun_htmlspecialchars( $mod_title ) ?>. See readme.txt for further instructions.</p>
+      <p><a href="javascript: history.go(-1)">Go 1 step back</a></p>
+      <p><a href="<?php echo pun_htmlspecialchars( get_base_url( TRUE ) ) ?>">Go to your site</a> | <a href="<?php echo pun_htmlspecialchars( get_base_url( TRUE ) ).'/admin_index.php' ?>">Go to your site's administration</a></p>
     </div>
   </div>
 </div>
@@ -190,6 +242,8 @@ if ( isset( $_POST['form_sent'] ) )
   <div class="box">
     <div class="inbox">
       <p>Your database has been successfully restored.</p>
+      <p><a href="javascript: history.go(-1)">Go 1 step back</a></p>
+      <p><a href="<?php echo pun_htmlspecialchars( get_base_url( TRUE ) ) ?>">Go to your site</a> | <a href="<?php echo pun_htmlspecialchars( get_base_url( TRUE ) ).'/admin_index.php' ?>">Go to your site's administration</a></p>
     </div>
   </div>
 </div>
