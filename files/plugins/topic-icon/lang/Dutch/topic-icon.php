@@ -39,6 +39,7 @@ $lang_ti = array(
 'save icon'                               =>  'Icoon opslaan',
 'add new icon'                            =>  'Nieuwe icoon toevoegen',
 'delete icon'                             =>  'Icoon verwijderen',
+'cannot delete file'                      =>  'Je bestand is alleen lezen, kan dit bestand niet verwijderen.<br />Je zult hem zelf moeten verwijderen.<br />Je kunt het bestand vinden in "<strong>plugins/topic-icon/icons</strong>".',
 'data saved'                              =>  'Je opties zijn opgeslagen',
 
 );

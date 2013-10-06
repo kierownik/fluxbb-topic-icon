@@ -132,7 +132,13 @@ if ( isset( $_POST['delete_icon'] ) )
     while ( ( $entry = $d->read() ) !== false )
     {
       if ( $entry === $icon['filename'] )
-        @unlink( PUN_ROOT.'/plugins/topic-icon/icons/'.$entry );
+      {
+        if ( !@unlink( PUN_ROOT.'/plugins/topic-icon/icons/'.$entry ) )
+        {
+          generate_admin_menu( $plugin );
+          message( $lang_ti['cannot delete file'] );
+        }
+      }
     }
     $d->close();
 
