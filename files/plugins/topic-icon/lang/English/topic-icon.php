@@ -14,7 +14,7 @@
 $lang_ti = array(
 'topic icon'                              =>  'Topic Icon',
 'topic icon info'                         =>  'With this mod you can add an icon in front of the title of the first post of a topic.',
-'add new topic icon info'                 =>  'If you want to add a new icon then copie it to "<strong>/plugins/topic-icon/icons/</strong>" and refresh the page.',
+'add new topic icon info'                 =>  'If you want to add a new icon then copy it to "<strong>/plugins/topic-icon/icons/</strong>" and refresh the page.',
 'topic icons'                             =>  'Topic icons',
 'edit topic icon'                         =>  'Edit topic icon',
 'add topic icon'                          =>  'Add new topic icon',
