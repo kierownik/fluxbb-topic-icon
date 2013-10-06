@@ -4,8 +4,7 @@
 ************************************************************************
 *  Author: kierownik
 *  Date: 2013-06-15
-*  Description: Adds Social links to the profile and viewtopic pages
-*               where users can add their usernames.
+*  Description: Adds an icon to the first post of the topic
 *  Copyright (C) Daniel Rokven ( rokven@gmail.com )
 *  License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
 *
@@ -20,7 +19,7 @@ $author         = 'Daniel Rokven';
 $author_email   = 'rokven@gmail.com';
 
 // Versions of FluxBB this mod was created for. A warning will be displayed, if versions do not match
-$fluxbb_versions= array( '1.5.4', );
+$fluxbb_versions= array( '1.5.4', '1.5.3');
 
 // Set this to FALSE if you haven't implemented the restore function (see below)
 $mod_restore  = TRUE;
@@ -34,7 +33,7 @@ function install()
 {
   global $db, $pun_config;
 
-  // Schema to create the post_icon table
+  // Schema to create the topic_icon table
   $schema = array(
     'FIELDS'      => array(
       'id'        => array(
@@ -56,10 +55,10 @@ function install()
     )
   );
 
-  // Create the post_icon table
+  // Create the topic_icon table
   $db->create_table( 'topic_icon', $schema ) or error( 'Unable to create table "topic_icon"', __FILE__, __LINE__, $db->error() );
 
-  // All the icons in one array to insert into the post_icon table
+  // All the icons in one array to insert into the topic_icon table
   $topic_icons = array(
     'Big Grin'    => 'biggrin.png',
     'Bug'         => 'bug.png',
@@ -91,7 +90,7 @@ function install()
     'Wink'        => 'wink.png',
   );
 
-  // Loop thru the $post_icons array to add them to the post_icon table
+  // Loop thru the $topic_icons array to add them to the post_icon table
   foreach ( $topic_icons AS $key => $value )
   {
     $db->query( "INSERT INTO ".$db->prefix."topic_icon ( name, filename ) VALUES ( '$key', '$value' ) " ) or error( 'Unable to add "'.$key.'" to topic_icon table', __FILE__, __LINE__, $db->error() );
@@ -104,7 +103,7 @@ function install()
   // Add a new field to the posts table to hold the id of the icon
   $db->add_field( 'topics', 'topic_icon', 'int', $allow_null, $default_value, $after_field ) or error( 'Unable to add column "topic_icon" to table "topics"', __FILE__, __LINE__, $db->error() );
 
-  // generate the post_icons cache
+  // generate the topic_icons cache
   require_once PUN_ROOT.'include/cache.php';
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
   generate_topic_icon_cache();
@@ -116,12 +115,12 @@ function restore()
   global $db, $db_type, $pun_config;
 
   // Drop the field post_icon from the posts table
-  $db->drop_field( 'topics', 'topic_icon' ) or error( 'Unable to drop column "post_icon" from table "topics"', __FILE__, __LINE__, $db->error() );
+  $db->drop_field( 'topics', 'topic_icon' ) or error( 'Unable to drop column "topic_icon" from table "topics"', __FILE__, __LINE__, $db->error() );
 
   // Drop the table post_icon
-  $db->drop_table( 'topic_icon' ) or error( 'Unable to drop table "post_icon"', __FILE__, __LINE__, $db->error() );
+  $db->drop_table( 'topic_icon' ) or error( 'Unable to drop table "topic_icon"', __FILE__, __LINE__, $db->error() );
 
-  // Clear the post_icons cache
+  // Clear the topic_icons cache
   require_once PUN_ROOT.'include/cache.php';
   require_once PUN_ROOT.'plugins/topic-icon/cache.php';
   clear_topic_icons_cache();

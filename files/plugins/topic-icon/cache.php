@@ -10,7 +10,7 @@
 ************************************************************************
 *  Author: kierownik
 *  Date: 2013-06-15
-*  Description: Adds post icons to the posts
+*  Description: Adds an icon to the first post of the topic
 *  Copyright (C) Daniel Rokven ( rokven@gmail.com )
 *  License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
 *

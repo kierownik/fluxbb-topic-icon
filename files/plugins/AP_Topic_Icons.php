@@ -4,7 +4,7 @@
 ************************************************************************
 *  Author: kierownik
 *  Date: 2013-06-15
-*  Description: Adds post icons to the posts
+*  Description: Adds an icon to the first post of the topic
 *  Copyright (C) Daniel Rokven ( rokven@gmail.com )
 *  License: http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
 *
@@ -348,7 +348,7 @@ else
       }
 ?>
 
-<div id="post_icons_in_database" class="blockform">
+<div id="topic_icons_in_database" class="blockform">
   <h2 class="block2"><span><?php echo $lang_ti['topic icons'] ?></span></h2>
   <div class="box">
     <div class="inform">

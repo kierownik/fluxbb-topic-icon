@@ -7,7 +7,7 @@
 ##     Release date:  2013-MM-DD 
 ##           Author:  Daniel Rokven(rokven@gmail.com) 
 ##
-##      Description:  Adds an icons to the first post of the topic 
+##      Description:  Adds an icon to the first post of the topic 
 ##
 ##       Affects DB:  Yes 
 ##
