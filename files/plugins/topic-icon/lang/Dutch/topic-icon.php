@@ -20,6 +20,8 @@ $lang_ti = array(
 'add topic icon'                          =>  'Voeg nieuw topic icoon toe',
 'delete topic icon'                       =>  'Verwijder topic icoon',
 'delete topic icon confirm'               =>  'Weet je zeker dat je de volgende icoon wilt verwijderen?',
+'options'                                 =>  'Opties',
+'icons_in_a_row'                          =>  'Hoeveel iconen wil je op 1 rij?',
 'name'                                    =>  'Naam',
 'name info'                               =>  'Dit is de naam voor het topic icoon zoals gebruikers hem zullen zien.',
 'icon'                                    =>  'Icoon',
@@ -40,6 +42,8 @@ $lang_ti = array(
 'add new icon'                            =>  'Nieuwe icoon toevoegen',
 'delete icon'                             =>  'Icoon verwijderen',
 'cannot delete file'                      =>  'Je bestand is alleen lezen, kan dit bestand niet verwijderen.<br />Je zult hem zelf moeten verwijderen.<br />Je kunt het bestand vinden in "<strong>plugins/topic-icon/icons</strong>".',
+'allowed_extensions'                      =>  'Toegestane extensies, komma\'s gescheiden',
+'save options'                            =>  'Opties opslaan',
 'data saved'                              =>  'Je opties zijn opgeslagen',
 
 );

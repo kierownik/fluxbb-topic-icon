@@ -20,6 +20,8 @@ $lang_ti = array(
 'add topic icon'                          =>  'Add new topic icon',
 'delete topic icon'                       =>  'Delete topic icon',
 'delete topic icon confirm'               =>  'Are you sure you want to delete this icon?',
+'options'                                 =>  'Options',
+'icons_in_a_row'                          =>  'How many icons do you want in a row?',
 'name'                                    =>  'Name',
 'name info'                               =>  'This is the name for the topic icon as shown to your users.',
 'icon'                                    =>  'Icon',
@@ -40,6 +42,8 @@ $lang_ti = array(
 'add new icon'                            =>  'Add new icon',
 'delete icon'                             =>  'Delete icon',
 'cannot delete file'                      =>  'Your file is read-only, cannot delete the file.<br />You have to delete the file yourself.<br />You can find it in "<strong>plugins/topic-icon/icons</strong>".',
+'allowed_extensions'                      =>  'Allowed extensions, comma separated',
+'save options'                            =>  'Save options',
 'data saved'                              =>  'Your data has been saved',
 
 );

@@ -23,8 +23,11 @@ define( 'PLUGIN_VERSION', '1.0' );
 // Define the PLUGIN_URL
 define( 'PLUGIN_URL', pun_htmlspecialchars( get_base_url( true ) ).'/admin_loader.php?plugin=AP_Topic_Icons.php' );
 
+// Unserialize $topic_icon_config
+$topic_icon_config = unserialize( $pun_config['o_topic_icon'] );
+
 // allowed icon extensions
-$allowed_extensions = array( "jpg","jpeg","png","gif" );
+$allowed_extensions = $topic_icon_config['allowed_extensions'];
 
 // Load the topic-icon.php language file
 if ( file_exists( PUN_ROOT.'plugins/topic-icon/lang/'.$pun_user['language'].'/topic-icon.php' ) )
@@ -58,14 +61,45 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 //
 // The rest is up to you!
 //
+if ( isset( $_POST['set_options'] ) )
+{
+  $updated = FALSE;
+
+  $topic_icon_config = array(
+    'icons_in_a_row'      =>  intval( $_POST['icons_in_a_row'] ),
+    'allowed_extensions'  =>  explode( ",", pun_htmlspecialchars( $_POST['allowed_extensions'] ) ),
+  );
+
+  if ( serialize( $topic_icon_config ) != $pun_config['o_topic_icon'] )
+  {
+    $query = 'UPDATE `'.$db->prefix."config` SET `conf_value` = '".$db->escape( serialize( $topic_icon_config ) )."' WHERE `conf_name` = 'o_topic_icon'";
+
+    $db->query( $query ) or error( 'Unable to update board config post '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
+
+    $updated = TRUE;
+  }
+
+  if ( $updated )
+  {
+    // Regenerate the topic_icons cache
+    require_once PUN_ROOT.'include/cache.php';
+    generate_config_cache();
+    redirect( PLUGIN_URL, $lang_ti['data saved'] );
+  }
+} // end edit_icon
+
+//
+// The rest is up to you!
+//
 if ( isset( $_POST['edit_icon'] ) )
 {
   $updated = FALSE;
 
-  if ( isset( $topic_icons[$_POST['icon_id']] ) )
+  $icon_id = intval( $_POST['icon_id'] );
+  if ( isset( $topic_icons[$icon_id] ) )
   {
-    $icon = $topic_icons[$_POST['icon_id']];
-    if ( $_POST['icon_name'] != $icon['name'] OR $_POST['filename'] != $icon['filename'] )
+    $icon = $topic_icons[$icon_id];
+    if ( $icon_id != $icon['name'] OR $_POST['filename'] != $icon['filename'] )
     {
       $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_name'] ) )."', `filename` = '".$db->escape( pun_htmlspecialchars($_POST['filename'] ) )."' WHERE `id` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_id'] ) )."'";
 
@@ -94,9 +128,9 @@ if ( isset( $_POST['add_icon'] ) )
   {
     $query = 'INSERT INTO `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_name'] ) )."', `filename` = '".$db->escape( pun_htmlspecialchars( $_POST['icon_filename'] ) )."'";
 
-      $db->query( $query ) or error( 'Unable to add icon to the table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
+    $db->query( $query ) or error( 'Unable to add icon to the table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
-      $updated = TRUE;
+    $updated = TRUE;
   }
   else
   {
@@ -119,12 +153,15 @@ if ( isset( $_POST['delete_icon'] ) )
 {
   $updated = FALSE;
 
-  if ( isset( $topic_icons[$_POST['id']] ) )
+  $icon_id = intval( $_POST['id'] );
+
+  if ( isset( $topic_icons[$icon_id] ) )
   {
-    $icon = $topic_icons[$_POST['id']];
+    $icon = $topic_icons[$icon_id];
 
     // Delete the topic icon from the database
-    $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$db->escape( $_POST['id'] )."'";
+    $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$db->escape( $icon_id )."'";
+
     $db->query( $query ) or error( 'Unable to delete icon from table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
     // Delete the file icon
@@ -190,7 +227,7 @@ if ( isset( $_GET['mode'] ) )
   <h2 class="block2"><span><?php echo $lang_ti['edit topic icon'] ?></span></h2>
   <div class="box">
     <div class="inform">
-      <form id="post_icon" method="post" action="<?php echo PLUGIN_URL ?>">
+      <form id="topic_icon" method="post" action="<?php echo PLUGIN_URL ?>">
         <input id="icon_id" name="icon_id" type="hidden" value="<?php echo $id ?>" />
         <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
           <tr>
@@ -219,7 +256,7 @@ elseif ( $_GET['mode'] == 'add' )
   <h2 class="block2"><span><?php echo $lang_ti['add topic icon'] ?></span></h2>
   <div class="box">
     <div class="inform">
-      <form id="post_icon" method="post" action="<?php echo PLUGIN_URL ?>">
+      <form id="topic_icon" method="post" action="<?php echo PLUGIN_URL ?>">
         <input id="id" name="icon_id" type="hidden" value="<?php echo $id ?>" />
         <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
           <tr>
@@ -258,7 +295,7 @@ elseif ( $_GET['mode'] == 'delete' )
   <h2 class="block2"><span><?php echo $lang_ti['delete topic icon'] ?></span></h2>
   <div class="box">
     <div class="inform">
-      <form id="post_icon" method="post" action="<?php echo PLUGIN_URL ?>">
+      <form id="delete_icon" method="post" action="<?php echo PLUGIN_URL ?>">
         <input id="id" name="id" type="hidden" value="<?php echo $id ?>" />
         <p>
           <?php echo $lang_ti['delete topic icon confirm'] ?>
@@ -283,6 +320,44 @@ elseif ( $_GET['mode'] == 'delete' )
 else
 {
 
+?>
+
+<div id="list_new_icons" class="blockform">
+  <h2 class="block2"><span><?php echo $lang_ti['options'] ?></span></h2>
+  <div class="box">
+    <div class="inform">
+      <form id="set_options" method="post" action="<?php echo PLUGIN_URL ?>">
+        <p class="submittop">
+          <input type="submit" name="set_options" value="<?php echo $lang_ti['save options'] ?>"/>
+        </p>
+        <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
+          <tr>
+            <td>
+              <label for="icons_in_a_row"><?php echo $lang_ti['icons_in_a_row'] ?></label>
+            </td>
+            <td>
+              <input type="text" id="icons_in_a_row" name="icons_in_a_row" value="<?php echo $topic_icon_config['icons_in_a_row'] ?>" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="allowed_extensions"><?php echo $lang_ti['allowed_extensions'] ?></label>
+            </td>
+            <td>
+              <input type="text" id="allowed_extensions" name="allowed_extensions" value="<?php echo implode( ",", $topic_icon_config['allowed_extensions'] ) ?>" />
+            </td>
+          </tr>
+        </table>
+        <p class="submittop">
+          <input type="submit" name="set_options" value="<?php echo $lang_ti['save options'] ?>"/>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<?php
+
   // scan the dir for files that are not in the database yet
   $dir = PUN_ROOT.'/plugins/topic-icon/icons/';
   $dh  = opendir( $dir );
@@ -290,12 +365,14 @@ else
   {
     $ext = pathinfo( $filename, PATHINFO_EXTENSION );
     if ( in_array( $ext, $allowed_extensions ) )
+    {
       $new_files[] = $filename;
+    }
   }
 
   // filter out the filenames out of the cache so that we can compare them to the new ones
   $image_filename = array();
-  foreach ( $topic_icons AS $key => $value)
+  foreach ( $topic_icons AS $key => $value )
   {
     $image_filename[] = $value['filename'];
   }
@@ -351,7 +428,9 @@ else
 </div>        <!-- end class="blockform" -->
 
 <?php
+
       }
+
 ?>
 
 <div id="topic_icons_in_database" class="blockform">

@@ -112,24 +112,25 @@ function install()
   }
   // End add a new field to the topics table to hold the id of the icon
 
-  // Begin check if "o_topic_icons" exist in the config table
-  $sql = 'SELECT * FROM ".$db->prefix."config WHERE conf_name="o_topic_icon"';
+  // Begin check if "o_topic_icon" exist in the config table
+  $sql = "SELECT * FROM `".$db->prefix."config` WHERE `conf_name`='o_topic_icon'";
 
-  if ( $db->fetch_row( $sql ) )
+  if ( !$db->num_rows( $db->query( $sql ) ) )
   {
     // Begin add options to the config table
-    $topic_icon_config = array(
-      'icons_in_a_row'  => '7',
+    $topic_icon_options = array(
+      'icons_in_a_row'      => '7',
+      'allowed_extensions'  => array( 'jpg', 'jpeg', 'png', 'gif' ),
     );
 
     // Serialize the new config
-    $topic_icon_config = serialize( $topic_icon_config );
+    $topic_icon_config = serialize( $topic_icon_options );
 
     // Insert the new config in the new config field
     $db->query( "INSERT INTO ".$db->prefix."config (conf_name, conf_value) VALUES ( 'o_topic_icon', '".$db->escape( $topic_icon_config )."' ) " ) or error( 'Unable to add "o_topic_icon" to config table', __FILE__, __LINE__, $db->error() );
     // End add options to the config table
   }
-  // End check if "o_topic_icons" exist in the config table
+  // End check if "o_topic_icon" exist in the config table
 
   // generate the topic_icons cache and config cache
   require_once PUN_ROOT.'include/cache.php';
@@ -158,15 +159,15 @@ function restore()
   }
   // End drop the table topic_icon
 
-  // Begin check if "o_topic_icons" exist in the config table
-  $sql = 'SELECT o_topic_icons FROM '.$db->prefix.'config';
+  // Begin check if "o_topic_icon" exist in the config table
+  $sql = "SELECT * FROM `".$db->prefix."config` WHERE `conf_name`='o_topic_icon'";
 
-  if ( $db->fetch_row( $sql ) )
+  if ( $db->num_rows( $db->query( $sql ) ) )
   {
     // Delete the "o_topic_icon" from the config table
     $db->query( 'DELETE FROM '.$db->prefix.'config WHERE conf_name = "o_topic_icon"' ) or error( 'Unable to delete "o_topic_icon" from config table', __FILE__, __LINE__, $db->error() );
   }
-  // End check if "o_topic_icons" exist in the config table
+  // End check if "o_topic_icon" exist in the config table
 
   // Clear the topic_icons cache and config cache
   require_once PUN_ROOT.'include/cache.php';
