@@ -26,6 +26,7 @@ $lang_ti = array(
 'name info'                               =>  'This is the name for the topic icon as shown to your users.',
 'icon'                                    =>  'Icon',
 'icon info'                               =>  'This is the topic icon image.',
+'filename'                                =>  'Filename',
 'your topic icon does not exist anymore'  => 'your topic icon does not exist anymore...',
 'no icon'                                 =>  'No icon',
 'icon does not exist'                     =>  'This icon does not exist!!!',

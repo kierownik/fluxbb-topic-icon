@@ -119,7 +119,7 @@ $db->query('UPDATE '.$db->prefix.'topics SET topic_icon=\''.$db->escape($topic_i
 #
 
 <?php $icon = ( $topic_icon == '0' OR !array_key_exists( $topic_icon, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$topic_icon]['filename'].'" alt="" /> '; ?>
-<li><span>»&#160;</span><?php echo $icon ?><a href="viewtopic.php?id=<?php echo $cur_post['tid'] ?>"><?php echo pun_htmlspecialchars($cur_post['subject']) ?></a></li>
+<li><span>»&#160;</span><?php echo pun_htmlspecialchars( $icon ) ?><a href="viewtopic.php?id=<?php echo $cur_post['tid'] ?>"><?php echo pun_htmlspecialchars($cur_post['subject']) ?></a></li>
 
 #
 #---------[ 13. FIND ]---------------------------------------------------
@@ -167,18 +167,6 @@ $db->query('INSERT INTO '.$db->prefix.'topics (poster, subject, posted, first_po
 #
 
 $db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, posted, first_post_id, forum_id) VALUES (\''.$db->escape($first_post_data['poster']).'\', \''.$db->escape($first_post_data['topic_icon']).'\', \''.$db->escape($new_subject).'\', '.$first_post_data['posted'].', '.$first_post_data['id'].', '.$move_to_forum.')') or error('Unable to create new topic', __FILE__, __LINE__, $db->error());
-
-#
-#---------[ 20. FIND ]---------------------------------------------------
-#
-
-$result = $db->query('SELECT u.title, u.num_posts, g.g_id, g.g_user_title, p.id, p.poster,
-
-#
-#---------[ 21. REPLACE WITH ]---------------------------------------------------
-#
-
-$result = $db->query('SELECT u.title, u.num_posts, g.g_id, g.g_user_title, p.id, p.topic_icon, p.poster,
 
 #
 #---------[ 22. FIND ]---------------------------------------------------
@@ -237,10 +225,6 @@ $result = $db->query('SELECT id, poster, topic_icon, subject,
       }
       else
       {
-        if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-        {
-          require_once PUN_ROOT.'include/cache.php';
-        }
         require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
         generate_topic_icon_cache();
@@ -289,10 +273,6 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   }
   else
   {
-    if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-    {
-      require_once PUN_ROOT.'include/cache.php';
-    }
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
     generate_topic_icon_cache();
@@ -336,7 +316,7 @@ $db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, post
 #---------[ 40. REPLACE WITH ]---------------------------------------------------
 #
 
-<?php endif; ?>			<li><span>?&#160;</span><?php echo $icon ?><strong><?php echo $action ?></strong></li>
+<?php endif; ?>			<li><span>?&#160;</span><?php echo pun_htmlspecialchars( $icon ) ?><strong><?php echo $action ?></strong></li>
 
 #
 #---------[ 41. FIND ]---------------------------------------------------
@@ -533,10 +513,6 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
       }
       else
       {
-        if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-        {
-          require_once PUN_ROOT.'include/cache.php';
-        }
         require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
         generate_topic_icon_cache();
@@ -560,7 +536,7 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
 #---------[ 71. REPLACE WITH ]---------------------------------------------------
 #
 
-<h2><span><span class="conr">#<?php echo ($start_from + $post_count) ?></span> <span><?php if ($cur_search['pid'] != $cur_search['first_post_id']) echo $lang_topic['Re'].' ' ?><?php echo $forum ?></span> <span>»&#160;<a href="viewtopic.php?id=<?php echo $cur_search['tid'] ?>"><?php echo pun_htmlspecialchars($cur_search['subject']) ?></a></span> <span>»&#160;<?php echo $icon[$cur_search['tid']] ?><a href="viewtopic.php?pid=<?php echo $cur_search['pid'].'#p'.$cur_search['pid'] ?>"><?php echo format_time($cur_search['pposted']) ?></a></span></span></h2>
+<h2><span><span class="conr">#<?php echo ($start_from + $post_count) ?></span> <span><?php if ($cur_search['pid'] != $cur_search['first_post_id']) echo $lang_topic['Re'].' ' ?><?php echo $forum ?></span> <span>»&#160;<a href="viewtopic.php?id=<?php echo $cur_search['tid'] ?>"><?php echo pun_htmlspecialchars($cur_search['subject']) ?></a></span> <span>»&#160;<?php echo pun_htmlspecialchars( $icon[$cur_search['tid']] ) ?><a href="viewtopic.php?pid=<?php echo $cur_search['pid'].'#p'.$cur_search['pid'] ?>"><?php echo format_time($cur_search['pposted']) ?></a></span></span></h2>
 
 #
 #---------[ 72. FIND ]---------------------------------------------------
@@ -584,10 +560,6 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
       }
       else
       {
-        if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-        {
-          require_once PUN_ROOT.'include/cache.php';
-        }
         require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
         generate_topic_icon_cache();
@@ -651,10 +623,6 @@ $sql = 'SELECT p.poster_id AS has_posted, t.id, t.topic_icon, t.subject,
       }
       else
       {
-        if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-        {
-          require_once PUN_ROOT.'include/cache.php';
-        }
         require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
         generate_topic_icon_cache();
@@ -715,10 +683,6 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   }
   else
   {
-    if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-    {
-      require_once PUN_ROOT.'include/cache.php';
-    }
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
     generate_topic_icon_cache();
@@ -737,7 +701,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 #
 
 <?php $icon = ( isset( $cur_topic['topic_icon'] ) AND $cur_topic['topic_icon'] == '0'  OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_topic['topic_icon']]['filename'].'" alt="" /> '; ?>
-      <li><span>»&#160;</span><strong><?php echo $icon ?><a href="viewtopic.php?id=<?php echo $id ?>"><?php echo pun_htmlspecialchars($cur_topic['subject']) ?></a></strong></li>
+      <li><span>»&#160;</span><strong><?php echo pun_htmlspecialchars( $icon ) ?><a href="viewtopic.php?id=<?php echo $id ?>"><?php echo pun_htmlspecialchars($cur_topic['subject']) ?></a></strong></li>
 
 #
 #---------[ 90. FIND ]---------------------------------------------------
@@ -750,7 +714,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 #
 
 <?php $icon = ( isset( $cur_topic['topic_icon'] ) AND $cur_topic['topic_icon'] == '0'  OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_topic['topic_icon']]['filename'].'" alt="" /> '; ?>
-      <li><span>»&#160;</span><strong><?php echo $icon ?><a href="viewtopic.php?id=<?php echo $id ?>"><?php echo pun_htmlspecialchars($cur_topic['subject']) ?></a></strong></li>
+      <li><span>»&#160;</span><strong><?php echo pun_htmlspecialchars( $icon ) ?><a href="viewtopic.php?id=<?php echo $id ?>"><?php echo pun_htmlspecialchars($cur_topic['subject']) ?></a></strong></li>
 
 
 

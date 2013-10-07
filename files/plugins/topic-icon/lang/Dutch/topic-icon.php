@@ -26,6 +26,7 @@ $lang_ti = array(
 'name info'                               =>  'Dit is de naam voor het topic icoon zoals gebruikers hem zullen zien.',
 'icon'                                    =>  'Icoon',
 'icon info'                               =>  'Dit is het topic icoon afbeelding.',
+'filename'                                =>  'Bestandsnaam',
 'your topic icon does not exist anymore'  => 'Jouw topic icoon bestaat niet meer...',
 'no icon'                                 =>  'Geen icoon',
 'icon does not exist'                     =>  'Deze icoon bestaat niet!!!',
