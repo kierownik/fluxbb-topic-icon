@@ -46,13 +46,10 @@ function generate_topic_icon_cache()
 //
 function clear_topic_icons_cache()
 {
-	$d = dir(FORUM_CACHE_DIR);
-	while (($entry = $d->read()) !== false)
+	if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
 	{
-		if (substr($entry, 0, 16) == 'cache_topic_icon' && substr($entry, -4) == '.php')
-			@unlink(FORUM_CACHE_DIR.$entry);
+		@unlink( FORUM_CACHE_DIR.'cache_topic_icon.php' );
 	}
-	$d->close();
 }
 
 //

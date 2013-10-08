@@ -102,7 +102,7 @@ function install()
   // End create the topic_icon table and populate it
 
   // Begin add a new field to the topics table to hold the id of the icon
-  if ( !$db->field_exists( 'topics', 'topic_icon', TRUE ) )
+  if ( !$db->field_exists( 'topics', 'topic_icon' ) )
   {
     $allow_null = TRUE;
     $default_value = '0';
@@ -146,14 +146,14 @@ function restore()
   global $db, $db_type, $pun_config;
 
   // Begin drop the field topic_icon from the topics table
-  if ( $db->field_exists( 'topics', 'topic_icon', TRUE ) )
+  if ( $db->field_exists( 'topics', 'topic_icon' ) )
   {
     $db->drop_field( 'topics', 'topic_icon' ) or error( 'Unable to drop column "topic_icon" from table "topics"', __FILE__, __LINE__, $db->error() );
   }
   // End drop the field topic_icon from the topics table
 
   // Drop the table topic_icon
-  if ( $db->table_exists( 'topic_icon', TRUE ) )
+  if ( $db->table_exists( 'topic_icon' ) )
   {
     $db->drop_table( 'topic_icon' ) or error( 'Unable to drop table "topic_icon"', __FILE__, __LINE__, $db->error() );
   }
