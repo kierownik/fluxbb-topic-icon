@@ -92,7 +92,7 @@ if ( isset( $_POST['edit_icon'] ) )
     $icon = $topic_icons[$icon_id];
     if ( $icon_id != $icon['name'] OR $_POST['filename'] != $icon['filename'] )
     {
-      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['filename'] )."' WHERE `id` = '".$db->escape( $icon_id )."'";
+      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['filename'] )."' WHERE `id` = '".$icon_id."'";
 
       $db->query( $query ) or error( 'Unable to update table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
@@ -137,7 +137,7 @@ if ( isset( $_POST['delete_icon'] ) )
     $icon = $topic_icons[$icon_id];
 
     // Delete the topic icon from the database
-    $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$db->escape( $icon_id )."'";
+    $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$icon_id."'";
 
     $db->query( $query ) or error( 'Unable to delete icon from table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
