@@ -134,8 +134,6 @@ if ( isset( $_POST['delete_icon'] ) )
 
   if ( isset( $topic_icons[$icon_id] ) )
   {
-    //$icon = $topic_icons[$icon_id];
-
     // Delete the topic icon from the database
     $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$icon_id."'";
 
@@ -253,10 +251,10 @@ elseif ( $_GET['mode'] == 'add' )
 }
 elseif ( $_GET['mode'] == 'delete' )
 {
-  $id = intval( $_GET['id'] );
+  $icon_id = intval( $_GET['id'] );
   if ( isset( $topic_icons[$id] ) )
   {
-    $icon_id = $topic_icons[$id];
+    $icon_id = $topic_icons[$icon_id];
   }
   else
   {
@@ -270,7 +268,7 @@ elseif ( $_GET['mode'] == 'delete' )
   <div class="box">
     <div class="inform">
       <form id="delete_icon" method="post" action="<?php echo PLUGIN_URL ?>">
-        <input id="id" name="id" type="hidden" value="<?php echo $id ?>" />
+        <input id="id" name="id" type="hidden" value="<?php echo $icon_id ?>" />
         <p>
           <?php echo $lang_ti['delete topic icon confirm'] ?>
           <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $icon_id['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $icon_id['name'] ) ?>" />
@@ -430,7 +428,7 @@ else
 
 <?php
 
-        foreach ( $topic_icons AS $icon_id => $value)
+        foreach ( $topic_icons AS $icon_id => $value )
         {
           $icon_id = intval( $icon_id );
 
@@ -438,7 +436,7 @@ else
 
         <tr>
           <td>
-            <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$value['filename'] ?>" alt="<?php echo $value['name'] ?>" />
+            <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
           </td>
           <td>
             <?php echo pun_htmlspecialchars( $value['name'] ) ?>

@@ -95,7 +95,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 // if $_POST['topic_icon'] isset then that takes precedence over $cur_post['topic_icon']
 $icon_id = isset( $_POST['icon_id'] ) ? intval( $_POST['icon_id'] ) : $cur_post['topic_icon'];
 
-$icon = ( $icon_id == '0' OR !array_key_exists( $icon_id, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$icon_id]['filename'].'" alt="" /> ';
+$icon = ( $icon_id == '0' OR !array_key_exists( $icon_id, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$icon_id]['filename'] ).'" alt="" /> ';
 
 #
 #---------[ 9. FIND ]---------------------------------------------------
@@ -231,7 +231,7 @@ $result = $db->query('SELECT id, poster, topic_icon, subject,
         include FORUM_CACHE_DIR.'cache_topic_icon.php';
       }
     }
-      $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_topic['topic_icon']]['filename'].'" alt="" /> ';
+      $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon[$cur_topic['id']] ) AND $icon[$cur_topic['id']] != '' )
         $subject = implode(' ', $icon).' '.$subject;
@@ -282,7 +282,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   // Set $icon_id
   $icon_id = !empty( $_POST['icon_id'] ) ? intval( $_POST['icon_id'] ) : '';
 
-  $icon = ( !isset( $icon_id ) OR empty( $icon_id ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$icon_id]['filename'].'" alt="" /> ';
+  $icon = ( !isset( $icon_id ) OR empty( $icon_id ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$icon_id]['filename'] ).'" alt="" /> ';
 
 #
 #---------[ 33. FIND ]---------------------------------------------------
@@ -511,7 +511,7 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
     }
     if ( $cur_search['pid'] == $cur_search['first_post_id'] )
     {
-    	$icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_search['topic_icon']]['filename'].'" alt="" /> ';
+    	$icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_search['topic_icon']]['filename'] ).'" alt="" /> ';
     }
     else
     	$icon[$cur_search['tid']] = '';
@@ -556,7 +556,7 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
         include FORUM_CACHE_DIR.'cache_topic_icon.php';
       }
     }
-      $icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_search['topic_icon']]['filename'].'" alt="" /> ';
+      $icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_search['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon[$cur_search['tid']] ) AND $icon[$cur_search['tid']] != '' )
         $subject = implode(' ', $icon).' '.$subject;
@@ -619,7 +619,7 @@ $sql = 'SELECT p.poster_id AS has_posted, t.id, t.topic_icon, t.subject,
         include FORUM_CACHE_DIR.'cache_topic_icon.php';
       }
     }
-      $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_topic['topic_icon']]['filename'].'" alt="" /> ';
+      $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon[$cur_topic['id']] ) AND $icon[$cur_topic['id']] != '' )
         $subject = implode(' ', $icon).' '.$subject;
@@ -680,7 +680,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   }
 }
 
-$icon = ( isset( $cur_topic['topic_icon'] ) AND $cur_topic['topic_icon'] == '0'  OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$cur_topic['topic_icon']]['filename'].'" alt="" /> ';
+$icon = ( isset( $cur_topic['topic_icon'] ) AND $cur_topic['topic_icon'] == '0'  OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /> ';
 
 #
 #---------[ 84. FIND ]---------------------------------------------------
