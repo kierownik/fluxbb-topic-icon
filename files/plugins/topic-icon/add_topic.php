@@ -30,10 +30,6 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   }
   else
   {
-    if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-    {
-      require_once PUN_ROOT.'include/cache.php';
-    }
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
     generate_topic_icon_cache();
@@ -42,15 +38,15 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 }
 ?>
 
-<label for="topic_icon"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
-<input type="radio" name="topic_icon" value="0" <?php echo ( empty( $topic_icon ) OR ( $topic_icon == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
+<label for="icon_id"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
+<input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
 <?php
 $i = 1;
 foreach ( $topic_icons AS $key => $value )
 {
   ?>
 
-		<input type="radio" name="topic_icon" value="<?php echo $key ?>" <?php echo ( isset( $topic_icon ) AND ( $topic_icon == $key ) ) ? 'checked="checked"' : ''; ?>>
+		<input type="radio" name="icon_id" value="<?php echo $key ?>" <?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? 'checked="checked"' : ''; ?>>
     <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$value['filename'] ?>" alt="<?php echo $value['name'] ?>" title="<?php echo $value['name'] ?>" />
 
   <?php

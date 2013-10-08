@@ -90,9 +90,9 @@ if ( isset( $_POST['edit_icon'] ) )
   if ( isset( $topic_icons[$icon_id] ) )
   {
     $icon = $topic_icons[$icon_id];
-    if ( $icon_id != $icon['name'] OR $_POST['filename'] != $icon['filename'] )
+    if ( $_POST['icon_name'] != $topic_icons[$icon_id]['name'] OR $_POST['icon_filename'] != $topic_icons[$icon_id]['filename'] )
     {
-      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['filename'] )."' WHERE `id` = '".$icon_id."'";
+      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['icon_filename'] )."' WHERE `id` = '".$icon_id."'";
 
       $db->query( $query ) or error( 'Unable to update table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
@@ -134,7 +134,7 @@ if ( isset( $_POST['delete_icon'] ) )
 
   if ( isset( $topic_icons[$icon_id] ) )
   {
-    $icon = $topic_icons[$icon_id];
+    //$icon = $topic_icons[$icon_id];
 
     // Delete the topic icon from the database
     $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$icon_id."'";
@@ -185,7 +185,7 @@ if ( isset( $_GET['mode'] ) )
     $id = intval( $_GET['id'] );
     if ( isset( $topic_icons[$id] ) )
     {
-      $icon = $topic_icons[$id];
+      $icon_id = $topic_icons[$id];
     }
     else
     {
@@ -201,12 +201,12 @@ if ( isset( $_GET['mode'] ) )
         <input id="icon_id" name="icon_id" type="hidden" value="<?php echo $id ?>" />
         <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
           <tr>
-            <td><label for="name"><?php echo $lang_ti['name'] ?></label></td>
-            <td><input id="icon_name" name="icon_name" type="text" value="<?php echo pun_htmlspecialchars( $icon['name'] ) ?>" /> <?php echo $lang_ti['name info'] ?></td>
+            <td><label for="icon_name"><?php echo $lang_ti['name'] ?></label></td>
+            <td><input id="icon_name" name="icon_name" type="text" value="<?php echo pun_htmlspecialchars( $icon_id['name'] ) ?>" /> <?php echo $lang_ti['name info'] ?></td>
           </tr>
           <tr>
-            <td><label for="filename"><?php echo $lang_ti['filename'] ?></label></td>
-            <td><input id="filename" name="filename" type="text" value="<?php echo pun_htmlspecialchars( $icon['filename'] ) ?>" /> <?php echo $lang_ti['icon info'] ?></td>
+            <td><label for="icon_filename"><?php echo $lang_ti['filename'] ?></label></td>
+            <td><input id="icon_filename" name="icon_filename" type="text" value="<?php echo pun_htmlspecialchars( $icon_id['filename'] ) ?>" /> <?php echo $lang_ti['icon info'] ?></td>
           </tr>
         </table>
         <p class="submittop">
@@ -256,7 +256,7 @@ elseif ( $_GET['mode'] == 'delete' )
   $id = intval( $_GET['id'] );
   if ( isset( $topic_icons[$id] ) )
   {
-    $icon = $topic_icons[$id];
+    $icon_id = $topic_icons[$id];
   }
   else
   {
@@ -273,7 +273,7 @@ elseif ( $_GET['mode'] == 'delete' )
         <input id="id" name="id" type="hidden" value="<?php echo $id ?>" />
         <p>
           <?php echo $lang_ti['delete topic icon confirm'] ?>
-          <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $icon['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $icon['name'] ) ?>" />
+          <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $icon_id['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $icon_id['name'] ) ?>" />
         </p>
         <p class="submittop">
           <input type="submit" name="delete_icon" value="<?php echo $lang_ti['delete icon'] ?>"/>
@@ -347,7 +347,7 @@ else
 
   // filter out the filenames out of the cache so that we can compare them to the new ones
   $image_filename = array();
-  foreach ( $topic_icons AS $key => $value )
+  foreach ( $topic_icons AS $icon_id => $value )
   {
     $image_filename[] = $value['filename'];
   }
@@ -379,21 +379,21 @@ else
           <?php
 
           // loop thru the array and show the new icon or icons
-          foreach ( $files AS $key )
+          foreach ( $files AS $filename )
           {
-            $key = pun_htmlspecialchars( $key );
+            $filename = pun_htmlspecialchars( $filename );
 
             ?>
 
           <tr>
             <td>
-              <?php echo $key ?>
+              <?php echo $filename ?>
             </td>
             <td>
-              <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$key ?>" alt="<?php echo $key ?>" />
+              <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$filename ?>" alt="<?php echo $filename ?>" />
             </td>
             <td>
-              <a href="<?php echo PLUGIN_URL.'&amp;mode=add&amp;icon='.$key ?>">Add image</a>
+              <a href="<?php echo PLUGIN_URL.'&amp;mode=add&amp;icon='.$filename ?>">Add image</a>
             </td>
           </tr>
 
@@ -430,9 +430,9 @@ else
 
 <?php
 
-        foreach ( $topic_icons AS $key => $value)
+        foreach ( $topic_icons AS $icon_id => $value)
         {
-          $key = pun_htmlspecialchars( $key );
+          $icon_id = intval( $icon_id );
 
 ?>
 
@@ -447,7 +447,7 @@ else
             <?php echo pun_htmlspecialchars( $value['filename'] ) ?>
           </td>
           <td>
-            <a href="<?php echo PLUGIN_URL.'&amp;mode=edit&amp;id='.$key ?>"><?php echo $lang_ti['edit'] ?></a> | <a href="<?php echo PLUGIN_URL.'&amp;mode=delete&amp;id='.$key ?>"><?php echo $lang_ti['delete'] ?></a>
+            <a href="<?php echo PLUGIN_URL.'&amp;mode=edit&amp;id='.$icon_id ?>"><?php echo $lang_ti['edit'] ?></a> | <a href="<?php echo PLUGIN_URL.'&amp;mode=delete&amp;id='.$icon_id ?>"><?php echo $lang_ti['delete'] ?></a>
           </td>
         </tr>
 

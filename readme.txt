@@ -91,11 +91,11 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
     include FORUM_CACHE_DIR.'cache_topic_icon.php';
   }
 }
-// Set $topic_icon
+// Set $icon_id
 // if $_POST['topic_icon'] isset then that takes precedence over $cur_post['topic_icon']
-$topic_icon = isset( $_POST['topic_icon'] ) ? intval( $_POST['topic_icon'] ) : $cur_post['topic_icon'];
+$icon_id = isset( $_POST['icon_id'] ) ? intval( $_POST['icon_id'] ) : $cur_post['topic_icon'];
 
-$icon = ( $topic_icon == '0' OR !array_key_exists( $topic_icon, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$topic_icon]['filename'].'" alt="" /> ';
+$icon = ( $icon_id == '0' OR !array_key_exists( $icon_id, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$icon_id]['filename'].'" alt="" /> ';
 
 #
 #---------[ 9. FIND ]---------------------------------------------------
@@ -107,7 +107,7 @@ $db->query('UPDATE '.$db->prefix.'topics SET subject=\''.$db->escape($subject).'
 #---------[ 10. REPLACE WITH ]---------------------------------------------------
 #
 
-$db->query('UPDATE '.$db->prefix.'topics SET topic_icon=\''.$db->escape($topic_icon).'\', subject=\''.$db->escape($subject).'\', sticky='.$stick_topic.' WHERE id='.$cur_post['tid'].' OR moved_to='.$cur_post['tid']) or error('Unable to update topic', __FILE__, __LINE__, $db->error());
+$db->query('UPDATE '.$db->prefix.'topics SET topic_icon=\''.$icon_id.'\', subject=\''.$db->escape($subject).'\', sticky='.$stick_topic.' WHERE id='.$cur_post['tid'].' OR moved_to='.$cur_post['tid']) or error('Unable to update topic', __FILE__, __LINE__, $db->error());
 
 #
 #---------[ 11. FIND ]---------------------------------------------------
@@ -279,10 +279,10 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
     include FORUM_CACHE_DIR.'cache_topic_icon.php';
   }
 }
-  // Set $topic_icon
-  $topic_icon = !empty( $_POST['topic_icon'] ) ? intval( $_POST['topic_icon'] ) : '';
+  // Set $icon_id
+  $icon_id = !empty( $_POST['icon_id'] ) ? intval( $_POST['icon_id'] ) : '';
 
-  $icon = ( !isset( $topic_icon ) OR empty( $topic_icon ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$topic_icon]['filename'].'" alt="" /> ';
+  $icon = ( !isset( $icon_id ) OR empty( $icon_id ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$topic_icons[$icon_id]['filename'].'" alt="" /> ';
 
 #
 #---------[ 33. FIND ]---------------------------------------------------
@@ -294,7 +294,7 @@ $db->query('INSERT INTO '.$db->prefix.'topics (poster, subject, posted, last_pos
 #---------[ 34. REPLACE WITH ]---------------------------------------------------
 #
 
-$db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, posted, last_post, last_poster, sticky, forum_id) VALUES(\''.$db->escape($username).'\', \''.$db->escape($topic_icon).'\', \''.$db->escape($subject).'\', '.$now.', '.$now.', \''.$db->escape($username).'\', '.$stick_topic.', '.$fid.')') or error('Unable to create topic', __FILE__, __LINE__, $db->error());
+$db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, posted, last_post, last_poster, sticky, forum_id) VALUES(\''.$db->escape($username).'\', \''.$icon_id.'\', \''.$db->escape($subject).'\', '.$now.', '.$now.', \''.$db->escape($username).'\', '.$stick_topic.', '.$fid.')') or error('Unable to create topic', __FILE__, __LINE__, $db->error());
 
 #
 #---------[ 35. FIND ]---------------------------------------------------

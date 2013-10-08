@@ -22,18 +22,18 @@ else
 }
 ?>
 
-<label for="topic_icon"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
+<label for="icon_id"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
 
 <?php
 
-if ( $topic_icon != '0' AND !array_key_exists( $topic_icon, $topic_icons ) )
+if ( $icon_id != '0' AND !array_key_exists( $icon_id, $topic_icons ) )
 {
   echo '<span style="color: red">'.$lang_ti['your topic icon does not exist anymore'].'</span><br />';
-  $topic_icon = '0';
+  $icon_id = '0';
 }
 
 ?>
-<input type="radio" name="topic_icon" value="0"<?php echo $topic_icon == '0' ? ' checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
+<input type="radio" name="icon_id" value="0"<?php echo $icon_id == '0' ? ' checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
 <?php
 $i = 1;
 foreach ( $topic_icons AS $key => $value )
@@ -41,7 +41,7 @@ foreach ( $topic_icons AS $key => $value )
 
   ?>
 
-		<input type="radio" name="topic_icon" value="<?php echo $key ?>"<?php echo ( !empty( $topic_icon ) AND ( $topic_icon == $key ) ) ? ' checked="checked"' : ''; ?>>
+		<input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( !empty( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
     <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$value['filename'] ?>" alt="<?php echo $value['name'] ?>" title="<?php echo $value['name'] ?>" />
 
   <?php
