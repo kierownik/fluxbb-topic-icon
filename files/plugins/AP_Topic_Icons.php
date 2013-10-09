@@ -92,7 +92,7 @@ if ( isset( $_POST['edit_icon'] ) )
     $icon = $topic_icons[$icon_id];
     if ( $_POST['icon_name'] != $topic_icons[$icon_id]['name'] OR $_POST['icon_filename'] != $topic_icons[$icon_id]['filename'] )
     {
-      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['icon_filename'] )."' WHERE `id` = '".$icon_id."'";
+      $query = 'UPDATE `'.$db->prefix."topic_icon` SET `name` = '".$db->escape( $_POST['icon_name'] )."', `filename` = '".$db->escape( $_POST['icon_filename'] )."' WHERE `id` = ".$icon_id."";
 
       $db->query( $query ) or error( 'Unable to update table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
@@ -130,20 +130,20 @@ if ( isset( $_POST['add_icon'] ) )
 // Delete the icon from the database
 if ( isset( $_POST['delete_icon'] ) )
 {
-  $icon_id = intval( $_POST['id'] );
+  $icon_id = intval( $_POST['icon_id'] );
 
-  if ( isset( $topic_icons[$icon_id] ) )
+  if ( array_key_exists( $icon_id, $topic_icons ) )
   {
     // Delete the topic icon from the database
-    $query = 'DELETE FROM `'.$db->prefix."topic_icon` WHERE `id` = '".$icon_id."'";
+    $query = 'DELETE FROM `'.$db->prefix.'topic_icon` WHERE `id` = '.$icon_id;
 
     $db->query( $query ) or error( 'Unable to delete icon from table topic_icon '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
     // Begin delete the file icon
     $dir = PUN_ROOT.'/plugins/topic-icon/icons/';
-    if ( file_exists( $dir.$icon['filename'] ) )
+    if ( file_exists( $dir.$topic_icons[$icon_id]['filename'] ) )
     {
-      if ( !@unlink( $dir.$icon['filename'] ) )
+      if ( !@unlink( $dir.$topic_icons[$icon_id]['filename'] ) )
       {
         generate_admin_menu( $plugin );
         message( $lang_ti['cannot delete file'] );
@@ -251,10 +251,10 @@ elseif ( $_GET['mode'] == 'add' )
 }
 elseif ( $_GET['mode'] == 'delete' )
 {
-  $icon_id = intval( $_GET['id'] );
-  if ( isset( $topic_icons[$id] ) )
+  $id = intval( $_GET['id'] );
+  if ( array_key_exists( $id, $topic_icons ) )
   {
-    $icon_id = $topic_icons[$icon_id];
+    $icon_id = $topic_icons[$id];
   }
   else
   {
@@ -268,7 +268,7 @@ elseif ( $_GET['mode'] == 'delete' )
   <div class="box">
     <div class="inform">
       <form id="delete_icon" method="post" action="<?php echo PLUGIN_URL ?>">
-        <input id="id" name="id" type="hidden" value="<?php echo $icon_id ?>" />
+        <input id="icon_id" name="icon_id" type="hidden" value="<?php echo $id ?>" />
         <p>
           <?php echo $lang_ti['delete topic icon confirm'] ?>
           <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $icon_id['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $icon_id['name'] ) ?>" />
