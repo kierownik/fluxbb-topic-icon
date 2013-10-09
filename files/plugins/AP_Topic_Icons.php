@@ -391,7 +391,7 @@ else
               <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$filename ?>" alt="<?php echo $filename ?>" />
             </td>
             <td>
-              <a href="<?php echo PLUGIN_URL.'&amp;mode=add&amp;icon='.$filename ?>">Add image</a>
+              <a href="<?php echo PLUGIN_URL.'&amp;mode=add&amp;icon='.$filename ?>"><?php echo $lang_ti['add icon'] ?></a>
             </td>
           </tr>
 

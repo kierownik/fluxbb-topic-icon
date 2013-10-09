@@ -40,6 +40,7 @@ $lang_ti = array(
 'your icon has been deleted'              =>  'Je icoon is met succes verwijderd...',
 'your icon has been changed'              =>  'Je icoon is met succes bewerkt...',
 'save icon'                               =>  'Icoon opslaan',
+'add icon'                                =>  'Icoon toevoegen',
 'add new icon'                            =>  'Nieuwe icoon toevoegen',
 'delete icon'                             =>  'Icoon verwijderen',
 'cannot delete file'                      =>  'Je bestand is alleen lezen, kan dit bestand niet verwijderen.<br />Je zult hem zelf moeten verwijderen.<br />Je kunt het bestand vinden in "<strong>plugins/topic-icon/icons</strong>".',
