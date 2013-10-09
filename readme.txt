@@ -306,7 +306,7 @@ $db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, post
 #---------[ 36. REPLACE WITH ]---------------------------------------------------
 #
 
-<?php endif; ?>			<li><span>?&#160;</span><?php echo $icon ?><strong><?php echo $action ?></strong></li>
+<?php endif; ?>			<li><span>»&#160;</span><?php echo $icon ?><strong><?php echo $action ?></strong></li>
 
 #
 #---------[ 37. FIND ]---------------------------------------------------
