@@ -18,9 +18,10 @@
 **/
 
 // Make sure no one attempts to run this script "directly"
-if (!defined('PUN'))
-	exit;
-
+if ( !defined( 'PUN' ) )
+{
+  exit;
+}
 
 //
 // Generate the config cache PHP script

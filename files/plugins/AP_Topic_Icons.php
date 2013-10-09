@@ -23,11 +23,11 @@ define( 'PLUGIN_VERSION', '1.0' );
 // Define the PLUGIN_URL
 define( 'PLUGIN_URL', pun_htmlspecialchars( get_base_url( true ) ).'/admin_loader.php?plugin=AP_Topic_Icons.php' );
 
-// Unserialize $topic_icon_config
-$topic_icon_config = unserialize( $pun_config['o_topic_icon'] );
+// Unserialize $ti_config
+$ti_config = unserialize( $pun_config['o_topic_icon'] );
 
 // allowed icon extensions
-$allowed_extensions = $topic_icon_config['allowed_extensions'];
+$allowed_extensions = $ti_config['allowed_extensions'];
 
 // Load the topic-icon.php language file
 if ( file_exists( PUN_ROOT.'plugins/topic-icon/lang/'.$pun_user['language'].'/topic-icon.php' ) )
@@ -63,14 +63,14 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 //
 if ( isset( $_POST['set_options'] ) )
 {
-  $topic_icon_config = array(
-    'icons_in_a_row'      =>  intval( $_POST['icons_in_a_row'] ),
+  $ti_config = array(
+    'icons_in_a_row'      =>  !empty( $_POST['icons_in_a_row'] ) ? intval( $_POST['icons_in_a_row'] ) : '0',
     'allowed_extensions'  =>  explode( ",", $_POST['allowed_extensions'] ),
   );
 
-  if ( serialize( $topic_icon_config ) != $pun_config['o_topic_icon'] )
+  if ( serialize( $ti_config ) != $pun_config['o_topic_icon'] )
   {
-    $query = 'UPDATE `'.$db->prefix."config` SET `conf_value` = '".$db->escape( serialize( $topic_icon_config ) )."' WHERE `conf_name` = 'o_topic_icon'";
+    $query = 'UPDATE `'.$db->prefix."config` SET `conf_value` = '".$db->escape( serialize( $ti_config ) )."' WHERE `conf_name` = 'o_topic_icon'";
 
     $db->query( $query ) or error( 'Unable to update board config post '. print_r( $db->error() ),__FILE__, __LINE__, $db->error() );
 
@@ -309,7 +309,7 @@ else
               <label for="icons_in_a_row"><?php echo $lang_ti['icons_in_a_row'] ?></label>
             </td>
             <td>
-              <input type="text" id="icons_in_a_row" name="icons_in_a_row" value="<?php echo pun_htmlspecialchars( $topic_icon_config['icons_in_a_row'] ) ?>" />
+              <input type="text" id="icons_in_a_row" name="icons_in_a_row" value="<?php echo pun_htmlspecialchars( $ti_config['icons_in_a_row'] ) ?>" />
             </td>
           </tr>
           <tr>
@@ -317,7 +317,7 @@ else
               <label for="allowed_extensions"><?php echo $lang_ti['allowed_extensions'] ?></label>
             </td>
             <td>
-              <input type="text" id="allowed_extensions" name="allowed_extensions" value="<?php echo pun_htmlspecialchars( implode( ",", $topic_icon_config['allowed_extensions'] ) ) ?>" />
+              <input type="text" id="allowed_extensions" name="allowed_extensions" value="<?php echo pun_htmlspecialchars( implode( ",", $ti_config['allowed_extensions'] ) ) ?>" />
             </td>
           </tr>
         </table>
