@@ -1,0 +1,692 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fluxbb-topic-icon by kierownik</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Fluxbb-topic-icon</h1>
+        <p>Adds an icon to the first post of the topic</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/kierownik/fluxbb-topic-icon" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/kierownik/fluxbb-topic-icon/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/kierownik/fluxbb-topic-icon/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h2>
+<a name="mod-title--topic-icon" class="anchor" href="#mod-title--topic-icon"><span class="octicon octicon-link"></span></a>Mod title:  Topic Icon</h2>
+
+<h2>
+<a name="mod-version--10" class="anchor" href="#mod-version--10"><span class="octicon octicon-link"></span></a>Mod version:  1.0</h2>
+
+<h2>
+<a name="works-on-punbb--154-153" class="anchor" href="#works-on-punbb--154-153"><span class="octicon octicon-link"></span></a>Works on PunBB:  1.5.4, 1.5.3</h2>
+
+<h2>
+<a name="release-date--2013-mm-dd" class="anchor" href="#release-date--2013-mm-dd"><span class="octicon octicon-link"></span></a>Release date:  2013-MM-DD</h2>
+
+<h2>
+<a name="author--daniel-rokvenrokvengmailcom" class="anchor" href="#author--daniel-rokvenrokvengmailcom"><span class="octicon octicon-link"></span></a>Author:  Daniel Rokven(<a href="mailto:rokven@gmail.com">rokven@gmail.com</a>)</h2>
+
+<h2>
+<a name="description--adds-an-icon-to-the-first-post-of-the-topic" class="anchor" href="#description--adds-an-icon-to-the-first-post-of-the-topic"><span class="octicon octicon-link"></span></a>Description:  Adds an icon to the first post of the topic</h2>
+
+<h2>
+<a name="affects-db--yes" class="anchor" href="#affects-db--yes"><span class="octicon octicon-link"></span></a>Affects DB:  Yes</h2>
+
+<h2>
+<a name="affected-files--editphp" class="anchor" href="#affected-files--editphp"><span class="octicon octicon-link"></span></a>Affected files:  edit.php</h2>
+
+<h2>
+<a name="moderatephp" class="anchor" href="#moderatephp"><span class="octicon octicon-link"></span></a>moderate.php</h2>
+
+<h2>
+<a name="postphp" class="anchor" href="#postphp"><span class="octicon octicon-link"></span></a>post.php</h2>
+
+<h2>
+<a name="searchphp" class="anchor" href="#searchphp"><span class="octicon octicon-link"></span></a>search.php</h2>
+
+<h2>
+<a name="viewforumphp" class="anchor" href="#viewforumphp"><span class="octicon octicon-link"></span></a>viewforum.php</h2>
+
+<h2>
+<a name="viewtopicphp" class="anchor" href="#viewtopicphp"><span class="octicon octicon-link"></span></a>viewtopic.php</h2>
+
+<h2>
+<a name="disclaimer--please-note-that-mods-are-not-officially-supported-by" class="anchor" href="#disclaimer--please-note-that-mods-are-not-officially-supported-by"><span class="octicon octicon-link"></span></a>DISCLAIMER:  Please note that 'mods' are not officially supported by</h2>
+
+<h2>
+<a name="punbb-installation-of-this-modification-is-done-at-your" class="anchor" href="#punbb-installation-of-this-modification-is-done-at-your"><span class="octicon octicon-link"></span></a>PunBB. Installation of this modification is done at your</h2>
+
+<h2>
+<a name="own-risk-backup-your-forum-database-and-any-and-all" class="anchor" href="#own-risk-backup-your-forum-database-and-any-and-all"><span class="octicon octicon-link"></span></a>own risk. Backup your forum database and any and all</h2>
+
+<h2>
+<a name="applicable-files-before-proceeding" class="anchor" href="#applicable-files-before-proceeding"><span class="octicon octicon-link"></span></a>applicable files before proceeding.</h2>
+
+<h1>
+<a name="----------1-upload----------------------------------------------------" class="anchor" href="#----------1-upload----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 1. UPLOAD ]---------------------------------------------------</h1>
+
+<p>install_mod.php to /
+files/ to /</p>
+
+<h1>
+<a name="----------2-run----------------------------------------------------" class="anchor" href="#----------2-run----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 2. RUN ]---------------------------------------------------</h1>
+
+<p>install_mod.php</p>
+
+<h1>
+<a name="----------3-delete----------------------------------------------------" class="anchor" href="#----------3-delete----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 3. DELETE ]---------------------------------------------------</h1>
+
+<p>install_mod.php</p>
+
+<h1>
+<a name="----------4-open----------------------------------------------------" class="anchor" href="#----------4-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 4. OPEN ]---------------------------------------------------</h1>
+
+<p>edit.php</p>
+
+<h1>
+<a name="----------5-find----------------------------------------------------" class="anchor" href="#----------5-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 5. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT f.id AS fid, f.forum_name, f.moderators, f.redirect_url, fp.post_replies, fp.post_topics, t.id AS tid, t.subject, t.posted,</p>
+
+<h1>
+<a name="----------6-replace-with----------------------------------------------------" class="anchor" href="#----------6-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 6. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT f.id AS fid, f.forum_name, f.moderators, f.redirect_url, fp.post_replies, fp.post_topics, t.id AS tid, t.subject, t.posted, t.topic_icon,</p>
+
+<h1>
+<a name="----------7-find----------------------------------------------------" class="anchor" href="#----------7-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 7. FIND ]---------------------------------------------------</h1>
+
+<p>$errors = array();</p>
+
+<h1>
+<a name="----------8-after-add----------------------------------------------------" class="anchor" href="#----------8-after-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 8. AFTER, ADD ]---------------------------------------------------</h1>
+
+<p>// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
+    {
+      require_once PUN_ROOT.'include/cache.php';
+    }
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';</p>
+
+<pre><code>generate_topic_icon_cache();
+include FORUM_CACHE_DIR.'cache_topic_icon.php';
+</code></pre>
+
+<p>}
+}
+// Set $icon_id
+// if $<em>POST['topic</em>icon'] isset then that takes precedence over $cur_post['topic_icon']
+$icon_id = isset( $<em>POST['icon</em>id'] ) ? intval( $<em>POST['icon</em>id'] ) : $cur_post['topic_icon'];</p>
+
+<p>$icon = ( $icon_id == '0' OR !array_key_exists( $icon_id, $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars(%20get_base_url(%20true%20)%20).'/plugins/topic-icon/icons/'.pun_htmlspecialchars(%20%24topic_icons%5B%24icon_id%5D%5B'filename'%5D%20).'" alt=""> ';</p>
+
+<h1>
+<a name="----------9-find----------------------------------------------------" class="anchor" href="#----------9-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 9. FIND ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('UPDATE '.$db-&gt;prefix.'topics SET subject=\''.$db-&gt;escape($subject).'\', sticky='.$stick_topic.' WHERE id='.$cur_post['tid'].' OR moved_to='.$cur_post['tid']) or error('Unable to update topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------10-replace-with----------------------------------------------------" class="anchor" href="#----------10-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 10. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('UPDATE '.$db-&gt;prefix.'topics SET topic_icon=\''.$icon_id.'\', subject=\''.$db-&gt;escape($subject).'\', sticky='.$stick_topic.' WHERE id='.$cur_post['tid'].' OR moved_to='.$cur_post['tid']) or error('Unable to update topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------11-find----------------------------------------------------" class="anchor" href="#----------11-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 11. FIND ]---------------------------------------------------</h1>
+
+<p></p>» <a href="viewtopic.php?id=&lt;?php%20echo%20%24cur_post%5B'tid'%5D%20?&gt;%22&gt;&lt;?php%20echo%20pun_htmlspecialchars(%24cur_post%5B'subject'%5D)%20?&gt;&lt;/a&gt;&lt;/li&gt;&lt;/p&gt;%0A%0A&lt;h1&gt;---------%5B%2012.%20REPLACE%20WITH%20%5D---------------------------------------------------&lt;/h1&gt;%0A%0A&lt;p&gt;&lt;li&gt;&lt;span&gt;%C2%BB%C2%A0&lt;/span&gt;&lt;?php%20echo%20%24icon%20?&gt;&lt;a%20href=">"&gt;&lt;?php echo pun_htmlspecialchars($cur_post['subject']) ?&gt;</a>
+
+<h1>
+<a name="----------13-find----------------------------------------------------" class="anchor" href="#----------13-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 13. FIND ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; ?&gt;                     <strong>&lt;?php echo $lang_common['Message'] ?&gt; &lt;?php echo $lang_common['Required'] ?&gt;</strong><br></p>
+
+<h1>
+<a name="----------14-replace-with----------------------------------------------------" class="anchor" href="#----------14-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 14. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; </p>
+
+<p>if ( $cur_post['first_post_id'] == $<em>GET['id'] )
+include ( PUN</em>ROOT.'/plugins/topic-icon/edit_topic.php' );</p>
+
+<p>?&gt;            <strong>&lt;?php echo $lang_common['Message'] ?&gt; &lt;?php echo $lang_common['Required'] ?&gt;</strong><br></p>
+
+<h1>
+<a name="----------15-open----------------------------------------------------" class="anchor" href="#----------15-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 15. OPEN ]---------------------------------------------------</h1>
+
+<p>moderate.php</p>
+
+<h1>
+<a name="----------16-find----------------------------------------------------" class="anchor" href="#----------16-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 16. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.subject,</p>
+
+<h1>
+<a name="----------17-replace-with----------------------------------------------------" class="anchor" href="#----------17-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 17. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.topic_icon, t.subject,</p>
+
+<h1>
+<a name="----------18-find----------------------------------------------------" class="anchor" href="#----------18-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 18. FIND ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, subject, posted, first_post_id, forum_id) VALUES (\''.$db-&gt;escape($first_post_data['poster']).'\', \''.$db-&gt;escape($new_subject).'\', '.$first_post_data['posted'].', '.$first_post_data['id'].', '.$move_to_forum.')') or error('Unable to create new topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------19-replace-with----------------------------------------------------" class="anchor" href="#----------19-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 19. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, topic_icon, subject, posted, first_post_id, forum_id) VALUES (\''.$db-&gt;escape($first_post_data['poster']).'\', \''.$db-&gt;escape($first_post_data['topic_icon']).'\', \''.$db-&gt;escape($new_subject).'\', '.$first_post_data['posted'].', '.$first_post_data['id'].', '.$move_to_forum.')') or error('Unable to create new topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------20-find----------------------------------------------------" class="anchor" href="#----------20-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 20. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT poster, subject,</p>
+
+<h1>
+<a name="----------21-replace-with----------------------------------------------------" class="anchor" href="#----------21-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 21. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT poster, topic_icon, subject,</p>
+
+<h1>
+<a name="----------22-find----------------------------------------------------" class="anchor" href="#----------22-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 22. FIND ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, subject, posted, last_post, moved_to, forum_id) VALUES(\''.$db-&gt;escape($moved_to['poster']).'\', \''.$db-&gt;escape($moved_to['subject']).'\', '.$moved_to['posted'].', '.$moved_to['last_post'].', '.$cur_topic.', '.$fid.')') or error('Unable to create redirect topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------23-replace-with----------------------------------------------------" class="anchor" href="#----------23-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 23. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, topic_icon, subject, posted, last_post, moved_to, forum_id) VALUES(\''.$db-&gt;escape($moved_to['poster']).'\', \''.$db-&gt;escape($moved_to['topic_icon']).'\', \''.$db-&gt;escape($moved_to['subject']).'\', '.$moved_to['posted'].', '.$moved_to['last_post'].', '.$cur_topic.', '.$fid.')') or error('Unable to create redirect topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------24-find----------------------------------------------------" class="anchor" href="#----------24-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 24. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT id, poster, subject,</p>
+
+<h1>
+<a name="----------25-replace-with----------------------------------------------------" class="anchor" href="#----------25-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 25. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT id, poster, topic_icon, subject,</p>
+
+<h1>
+<a name="----------26-find----------------------------------------------------" class="anchor" href="#----------26-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 26. FIND ]---------------------------------------------------</h1>
+
+<p>// Insert the status text before the subject</p>
+
+<h1>
+<a name="----------27-before-add----------------------------------------------------" class="anchor" href="#----------27-before-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 27. BEFORE, ADD ]---------------------------------------------------</h1>
+
+<pre><code>$icon = array();
+
+// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+}
+  $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '&lt;img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /&gt; ';
+
+  if ( isset( $icon[$cur_topic['id']] ) AND $icon[$cur_topic['id']] != '' )
+    $subject = implode(' ', $icon).' '.$subject;
+</code></pre>
+
+<h1>
+<a name="----------28-open----------------------------------------------------" class="anchor" href="#----------28-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 28. OPEN ]---------------------------------------------------</h1>
+
+<p>post.php</p>
+
+<h1>
+<a name="----------29-find----------------------------------------------------" class="anchor" href="#----------29-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 29. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT f.id, f.forum_name, f.moderators, f.redirect_url, fp.post_replies, fp.post_topics, t.subject,</p>
+
+<h1>
+<a name="----------30-replace-with----------------------------------------------------" class="anchor" href="#----------30-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 30. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT f.id, f.forum_name, f.moderators, f.redirect_url, fp.post_replies, fp.post_topics, t.topic_icon, t.subject,</p>
+
+<h1>
+<a name="----------31-find----------------------------------------------------" class="anchor" href="#----------31-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 31. FIND ]---------------------------------------------------</h1>
+
+<p>// Did someone just hit "Submit" or "Preview"?</p>
+
+<h1>
+<a name="----------32-before-add----------------------------------------------------" class="anchor" href="#----------32-before-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 32. BEFORE, ADD ]---------------------------------------------------</h1>
+
+<p>// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';</p>
+
+<pre><code>generate_topic_icon_cache();
+include FORUM_CACHE_DIR.'cache_topic_icon.php';
+</code></pre>
+
+<p>}
+}
+  // Set $icon_id
+  $icon_id = !empty( $<em>POST['icon</em>id'] ) ? intval( $<em>POST['icon</em>id'] ) : '';</p>
+
+<p>$icon = ( !isset( $icon_id ) OR empty( $icon_id ) ) ? '' : '<img src="'.pun_htmlspecialchars(%20get_base_url(%20true%20)%20).'/plugins/topic-icon/icons/'.pun_htmlspecialchars(%20%24topic_icons%5B%24icon_id%5D%5B'filename'%5D%20).'" alt=""> ';</p>
+
+<h1>
+<a name="----------33-find----------------------------------------------------" class="anchor" href="#----------33-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 33. FIND ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, subject, posted, last_post, last_poster, sticky, forum_id) VALUES(\''.$db-&gt;escape($username).'\', \''.$db-&gt;escape($subject).'\', '.$now.', '.$now.', \''.$db-&gt;escape($username).'\', '.$stick_topic.', '.$fid.')') or error('Unable to create topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------34-replace-with----------------------------------------------------" class="anchor" href="#----------34-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 34. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$db-&gt;query('INSERT INTO '.$db-&gt;prefix.'topics (poster, topic_icon, subject, posted, last_post, last_poster, sticky, forum_id) VALUES(\''.$db-&gt;escape($username).'\', \''.$icon_id.'\', \''.$db-&gt;escape($subject).'\', '.$now.', '.$now.', \''.$db-&gt;escape($username).'\', '.$stick_topic.', '.$fid.')') or error('Unable to create topic', <strong>FILE</strong>, <strong>LINE</strong>, $db-&gt;error());</p>
+
+<h1>
+<a name="----------35-find----------------------------------------------------" class="anchor" href="#----------35-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 35. FIND ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; ?&gt;     </p>» <strong>&lt;?php echo $action ?&gt;</strong>
+
+<h1>
+<a name="----------36-replace-with----------------------------------------------------" class="anchor" href="#----------36-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 36. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; ?&gt;         </p>» &lt;?php echo $icon ?&gt;<strong>&lt;?php echo $action ?&gt;</strong>
+
+<h1>
+<a name="----------37-find----------------------------------------------------" class="anchor" href="#----------37-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 37. FIND ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; ?&gt;                     <strong>&lt;?php echo $lang_common['Message'] ?&gt; &lt;?php echo $lang_common['Required'] ?&gt;</strong><br></p>
+
+<h1>
+<a name="----------38-replace-with----------------------------------------------------" class="anchor" href="#----------38-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 38. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>&lt;?php endif; </p>
+
+<p>if ($fid)
+    include ( PUN_ROOT.'/plugins/topic-icon/add_topic.php' );</p>
+
+<p>?&gt;                      <strong>&lt;?php echo $lang_common['Message'] ?&gt; &lt;?php echo $lang_common['Required'] ?&gt;</strong><br></p>
+
+<h1>
+<a name="----------39-open----------------------------------------------------" class="anchor" href="#----------39-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 39. OPEN ]---------------------------------------------------</h1>
+
+<p>search.php</p>
+
+<h1>
+<a name="----------40-find----------------------------------------------------" class="anchor" href="#----------40-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 40. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS post_id, p.topic_id,</p>
+
+<h1>
+<a name="----------41-replace-with----------------------------------------------------" class="anchor" href="#----------41-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 41. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS post_id, t.topic_icon, p.topic_id,</p>
+
+<h1>
+<a name="----------42-find----------------------------------------------------" class="anchor" href="#----------42-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 42. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT m.post_id, p.topic_id,</p>
+
+<h1>
+<a name="----------43-replace-with----------------------------------------------------" class="anchor" href="#----------43-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 43. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT m.post_id, t.topic_icon, p.topic_id,</p>
+
+<h1>
+<a name="----------44-find----------------------------------------------------" class="anchor" href="#----------44-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 44. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS post_id, p.topic_id FROM</p>
+
+<h1>
+<a name="----------45-replace-with----------------------------------------------------" class="anchor" href="#----------45-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 45. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS post_id, p.topic_id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------46-find----------------------------------------------------" class="anchor" href="#----------46-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 46. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------47-replace-with----------------------------------------------------" class="anchor" href="#----------47-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 47. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------48-find----------------------------------------------------" class="anchor" href="#----------48-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 48. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------49-replace-with----------------------------------------------------" class="anchor" href="#----------49-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 49. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------50-find----------------------------------------------------" class="anchor" href="#----------50-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 50. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------51-replace-with----------------------------------------------------" class="anchor" href="#----------51-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 51. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------52-find----------------------------------------------------" class="anchor" href="#----------52-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 52. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id FROM</p>
+
+<h1>
+<a name="----------53-replace-with----------------------------------------------------" class="anchor" href="#----------53-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 53. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------54-find----------------------------------------------------" class="anchor" href="#----------54-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 54. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------55-replace-with----------------------------------------------------" class="anchor" href="#----------55-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 55. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------56-find----------------------------------------------------" class="anchor" href="#----------56-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 56. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------57-replace-with----------------------------------------------------" class="anchor" href="#----------57-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 57. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------58-find----------------------------------------------------" class="anchor" href="#----------58-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 58. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id FROM</p>
+
+<h1>
+<a name="----------59-replace-with----------------------------------------------------" class="anchor" href="#----------59-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 59. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id, t.topic_icon FROM</p>
+
+<h1>
+<a name="----------60-find----------------------------------------------------" class="anchor" href="#----------60-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 60. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS pid, p.poster</p>
+
+<h1>
+<a name="----------61-replace-with----------------------------------------------------" class="anchor" href="#----------61-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 61. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT p.id AS pid, t.topic_icon, p.poster</p>
+
+<h1>
+<a name="----------62-find----------------------------------------------------" class="anchor" href="#----------62-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 62. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id AS tid, t.poster,</p>
+
+<h1>
+<a name="----------63-replace-with----------------------------------------------------" class="anchor" href="#----------63-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 63. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.id AS tid, t.topic_icon, t.poster,</p>
+
+<h1>
+<a name="----------64-find----------------------------------------------------" class="anchor" href="#----------64-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 64. FIND ]---------------------------------------------------</h1>
+
+<pre><code>            if ($cur_search['poster_id'] &gt; 1)
+            {
+                if ($pun_user['g_view_users'] == '1')
+                    $pposter = '&lt;strong&gt;&lt;a href="profile.php?id='.$cur_search['poster_id'].'"&gt;'.$pposter.'&lt;/a&gt;&lt;/strong&gt;';
+                else
+                    $pposter = '&lt;strong&gt;'.$pposter.'&lt;/strong&gt;';
+            }
+</code></pre>
+
+<h1>
+<a name="----------65-after-add----------------------------------------------------" class="anchor" href="#----------65-after-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 65. AFTER, ADD ]---------------------------------------------------</h1>
+
+<pre><code>$icon = array();
+
+// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+}
+if ( $cur_search['pid'] == $cur_search['first_post_id'] )
+{
+    $icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '&lt;img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_search['topic_icon']]['filename'] ).'" alt="" /&gt; ';
+}
+else
+    $icon[$cur_search['tid']] = '';
+</code></pre>
+
+<h1>
+<a name="----------66-find----------------------------------------------------" class="anchor" href="#----------66-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 66. FIND ]---------------------------------------------------</h1>
+
+<h2>
+<a name="---" class="anchor" href="#---"><span class="octicon octicon-link"></span></a>#<?php echo ($start_from + $post_count) ?> <?php if ($cur_search['pid'] != $cur_search['first_post_id']) echo $lang_topic['Re'].' ' ?><?php echo $forum ?> » <a href="viewtopic.php?id=&lt;?php%20echo%20%24cur_search%5B'tid'%5D%20?&gt;"><?php echo pun_htmlspecialchars($cur_search['subject']) ?></a> » <a href="viewtopic.php?pid=&lt;?php%20echo%20%24cur_search%5B'pid'%5D.'#p'.%24cur_search%5B'pid'%5D%20?&gt;"><?php echo format_time($cur_search['pposted']) ?></a>
+</h2>
+
+<h1>
+<a name="----------67-replace-with----------------------------------------------------" class="anchor" href="#----------67-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 67. REPLACE WITH ]---------------------------------------------------</h1>
+
+<h2>
+<a name="----1" class="anchor" href="#----1"><span class="octicon octicon-link"></span></a>#<?php echo ($start_from + $post_count) ?> <?php if ($cur_search['pid'] != $cur_search['first_post_id']) echo $lang_topic['Re'].' ' ?><?php echo $forum ?> » <a href="viewtopic.php?id=&lt;?php%20echo%20%24cur_search%5B'tid'%5D%20?&gt;"><?php echo pun_htmlspecialchars($cur_search['subject']) ?></a> » <?php echo $icon[$cur_search['tid']] ?><a href="viewtopic.php?pid=&lt;?php%20echo%20%24cur_search%5B'pid'%5D.'#p'.%24cur_search%5B'pid'%5D%20?&gt;"><?php echo format_time($cur_search['pposted']) ?></a>
+</h2>
+
+<h1>
+<a name="----------68-find----------------------------------------------------" class="anchor" href="#----------68-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 68. FIND ]---------------------------------------------------</h1>
+
+<p>// Insert the status text before the subject</p>
+
+<h1>
+<a name="----------69-before-add----------------------------------------------------" class="anchor" href="#----------69-before-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 69. BEFORE, ADD ]---------------------------------------------------</h1>
+
+<pre><code>$icon = array();
+
+// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+}
+  $icon[$cur_search['tid']] = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '&lt;img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_search['topic_icon']]['filename'] ).'" alt="" /&gt; ';
+
+  if ( isset( $icon[$cur_search['tid']] ) AND $icon[$cur_search['tid']] != '' )
+    $subject = implode(' ', $icon).' '.$subject;
+</code></pre>
+
+<h1>
+<a name="----------70-open----------------------------------------------------" class="anchor" href="#----------70-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 70. OPEN ]---------------------------------------------------</h1>
+
+<p>viewforum.php</p>
+
+<h1>
+<a name="----------71-find----------------------------------------------------" class="anchor" href="#----------71-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 71. FIND ]---------------------------------------------------</h1>
+
+<p>$sql = 'SELECT id, poster, subject,</p>
+
+<h1>
+<a name="----------72-replace-with----------------------------------------------------" class="anchor" href="#----------72-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 72. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$sql = 'SELECT id, poster, topic_icon, subject,</p>
+
+<h1>
+<a name="----------73-find----------------------------------------------------" class="anchor" href="#----------73-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 73. FIND ]---------------------------------------------------</h1>
+
+<p>$sql = 'SELECT p.poster_id AS has_posted, t.id, t.subject,</p>
+
+<h1>
+<a name="----------74-replace-with----------------------------------------------------" class="anchor" href="#----------74-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 74. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$sql = 'SELECT p.poster_id AS has_posted, t.id, t.topic_icon, t.subject,</p>
+
+<h1>
+<a name="----------75-find----------------------------------------------------" class="anchor" href="#----------75-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 75. FIND ]---------------------------------------------------</h1>
+
+<p>// Insert the status text before the subject</p>
+
+<h1>
+<a name="----------76-before-add----------------------------------------------------" class="anchor" href="#----------76-before-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 76. BEFORE, ADD ]---------------------------------------------------</h1>
+
+<pre><code>$icon = array();
+
+// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+}
+  $icon[$cur_topic['id']] = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '&lt;img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /&gt; ';
+
+  if ( isset( $icon[$cur_topic['id']] ) AND $icon[$cur_topic['id']] != '' )
+    $subject = implode(' ', $icon).' '.$subject;
+</code></pre>
+
+<h1>
+<a name="----------77-open----------------------------------------------------" class="anchor" href="#----------77-open----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 77. OPEN ]---------------------------------------------------</h1>
+
+<p>viewtopic.php</p>
+
+<h1>
+<a name="----------78-find----------------------------------------------------" class="anchor" href="#----------78-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 78. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.subject,</p>
+
+<h1>
+<a name="----------79-replace-with----------------------------------------------------" class="anchor" href="#----------79-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 79. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.topic_icon, t.subject,</p>
+
+<h1>
+<a name="----------80-find----------------------------------------------------" class="anchor" href="#----------80-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 80. FIND ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.subject,</p>
+
+<h1>
+<a name="----------81-replace-with----------------------------------------------------" class="anchor" href="#----------81-replace-with----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 81. REPLACE WITH ]---------------------------------------------------</h1>
+
+<p>$result = $db-&gt;query('SELECT t.topic_icon, t.subject,</p>
+
+<h1>
+<a name="----------82-find----------------------------------------------------" class="anchor" href="#----------82-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 82. FIND ]---------------------------------------------------</h1>
+
+<p>require PUN_ROOT.'header.php';</p>
+
+<h1>
+<a name="----------83-after-add----------------------------------------------------" class="anchor" href="#----------83-after-add----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 83. AFTER, ADD ]---------------------------------------------------</h1>
+
+<p>// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';</p>
+
+<pre><code>generate_topic_icon_cache();
+include FORUM_CACHE_DIR.'cache_topic_icon.php';
+</code></pre>
+
+<p>}
+}</p>
+
+<p>$icon = ( isset( $cur_topic['topic_icon'] ) AND $cur_topic['topic_icon'] == '0'  OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars(%20get_base_url(%20true%20)%20).'/plugins/topic-icon/icons/'.pun_htmlspecialchars(%20%24topic_icons%5B%24cur_topic%5B'topic_icon'%5D%5D%5B'filename'%5D%20).'" alt=""> ';</p>
+
+<h1>
+<a name="----------84-find----------------------------------------------------" class="anchor" href="#----------84-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 84. FIND ]---------------------------------------------------</h1>
+
+<p></p>» <strong><a href="viewtopic.php?id=&lt;?php%20echo%20%24id%20?&gt;%22&gt;&lt;?php%20echo%20pun_htmlspecialchars(%24cur_topic%5B'subject'%5D)%20?&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&lt;/p&gt;%0A%0A&lt;h1&gt;---------%5B%2085.%20REPLACE%20WITH%20%5D---------------------------------------------------&lt;/h1&gt;%0A%0A&lt;p&gt;&lt;li&gt;&lt;span&gt;%C2%BB%C2%A0&lt;/span&gt;&lt;strong&gt;&lt;?php%20echo%20%24icon%20?&gt;&lt;a%20href=">"&gt;&lt;?php echo pun_htmlspecialchars($cur_topic['subject']) ?&gt;</a></strong>
+
+<h1>
+<a name="----------86-find----------------------------------------------------" class="anchor" href="#----------86-find----------------------------------------------------"><span class="octicon octicon-link"></span></a>---------[ 86. FIND ]---------------------------------------------------</h1>
+
+<p></p>» <strong><a href="viewtopic.php?id=&lt;?php%20echo%20%24id%20?&gt;%22&gt;&lt;?php%20echo%20pun_htmlspecialchars(%24cur_topic%5B'subject'%5D)%20?&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&lt;/p&gt;%0A%0A&lt;h1&gt;---------%5B%2087.%20REPLACE%20WITH%20%5D---------------------------------------------------&lt;/h1&gt;%0A%0A&lt;p&gt;&lt;li&gt;&lt;span&gt;%C2%BB%C2%A0&lt;/span&gt;&lt;strong&gt;&lt;?php%20echo%20%24icon%20?&gt;&lt;a%20href=">"&gt;&lt;?php echo pun_htmlspecialchars($cur_topic['subject']) ?&gt;</a></strong>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/kierownik">kierownik</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
