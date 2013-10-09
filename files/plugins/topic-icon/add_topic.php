@@ -47,7 +47,7 @@ foreach ( $topic_icons AS $key => $value )
   ?>
 
 		<input type="radio" name="icon_id" value="<?php echo $key ?>" <?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? 'checked="checked"' : ''; ?>>
-    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$value['filename'] ?>" alt="<?php echo $value['name'] ?>" title="<?php echo $value['name'] ?>" />
+    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.$value['filename'] ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
 
   <?php
   echo ( $i % 14 == 0 ) ? '<br />' : '';
