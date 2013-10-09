@@ -118,16 +118,16 @@ function install()
   if ( !$db->num_rows( $db->query( $sql ) ) )
   {
     // Begin add options to the config table
-    $topic_icon_options = array(
+    $ti_options = array(
       'icons_in_a_row'      => '10',
       'allowed_extensions'  => array( 'jpg', 'jpeg', 'png', 'gif' ),
     );
 
     // Serialize the new config
-    $topic_icon_config = serialize( $topic_icon_options );
+    $ti_config = serialize( $ti_options );
 
     // Insert the new config in the new config field
-    $db->query( "INSERT INTO ".$db->prefix."config (conf_name, conf_value) VALUES ( 'o_topic_icon', '".$db->escape( $topic_icon_config )."' ) " ) or error( 'Unable to add "o_topic_icon" to config table', __FILE__, __LINE__, $db->error() );
+    $db->query( "INSERT INTO ".$db->prefix."config (conf_name, conf_value) VALUES ( 'o_topic_icon', '".$db->escape( $ti_config )."' ) " ) or error( 'Unable to add "o_topic_icon" to config table', __FILE__, __LINE__, $db->error() );
     // End add options to the config table
   }
   // End check if "o_topic_icon" exist in the config table
