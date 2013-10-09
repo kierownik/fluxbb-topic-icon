@@ -143,7 +143,7 @@ if ( isset( $_POST['delete_icon'] ) )
     $dir = PUN_ROOT.'/plugins/topic-icon/icons/';
     if ( file_exists( $dir.$icon['filename'] ) )
     {
-      if ( !@unlink( PUN_ROOT.'/plugins/topic-icon/icons/'.$icon['filename'] ) )
+      if ( !@unlink( $dir.$icon['filename'] ) )
       {
         generate_admin_menu( $plugin );
         message( $lang_ti['cannot delete file'] );
