@@ -119,7 +119,7 @@ function install()
   {
     // Begin add options to the config table
     $topic_icon_options = array(
-      'icons_in_a_row'      => '7',
+      'icons_in_a_row'      => '10',
       'allowed_extensions'  => array( 'jpg', 'jpeg', 'png', 'gif' ),
     );
 
