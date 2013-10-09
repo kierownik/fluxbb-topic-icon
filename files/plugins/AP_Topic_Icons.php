@@ -422,7 +422,7 @@ else
           <th><?php echo $lang_ti['icon'] ?></th>
           <th><?php echo $lang_ti['name'] ?></th>
           <th><?php echo $lang_ti['filename'] ?></th>
-          <th><?php echo $lang_ti['controls'] ?></th>
+          <th><?php echo $lang_ti['actions'] ?></th>
         </tr>
         </thead>
 
