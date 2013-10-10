@@ -53,7 +53,7 @@ if ( empty( $ti_config['icons_in_a_row'] ) )
 }
 ?>
 
-<label for="icon_id"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
+<label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
 <input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
 <?php
 $i = 1;

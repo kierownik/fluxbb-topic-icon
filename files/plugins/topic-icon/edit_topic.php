@@ -29,7 +29,7 @@ else
 
 ?>
 
-<label for="icon_id"><strong><?php echo $lang_ti['topic icon'] ?></strong></label>
+<label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
 
 <?php
 
