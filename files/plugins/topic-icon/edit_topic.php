@@ -33,6 +33,15 @@ else
 
 <?php
 
+// Unserialize the $pun_config['o_topic_icon'] to get all the options
+$ti_config      = unserialize( $pun_config['o_topic_icon'] );
+
+// Check to see that there is not 0 in the database
+if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
+{
+  $i = 1;
+}
+
 if ( $icon_id != '0' AND !array_key_exists( $icon_id, $topic_icons ) )
 {
   echo '<span style="color: red">'.$lang_ti['your topic icon does not exist anymore'].'</span><br />';
@@ -45,28 +54,23 @@ if ( $icon_id != '0' AND !array_key_exists( $icon_id, $topic_icons ) )
 
 <?php
 
-// Unserialize the $pun_config['o_topic_icon'] to get all the options
-$ti_config = unserialize( $pun_config['o_topic_icon'] );
-
-// Check to see that there is not 0 in the database
-if ( empty( $ti_config['icons_in_a_row'] ) )
-{
-  $ti_config['icons_in_a_row'] = '10';
-}
-
-$i = 1;
 foreach ( $topic_icons AS $key => $value )
 {
 
   ?>
 
-		<input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( !empty( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
-    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
+  <input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( !empty( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
+  <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
 
   <?php
 
-  echo ( $i % intval( $ti_config['icons_in_a_row'] ) == 0 ) ? '<br />' : '';
-  $i++;
+  // Check how many icons in a row have to be
+  // when 0 then everything should be in 1 row
+  if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
+  {
+    echo ( $i % intval( $ti_config['icons_in_a_row'] ) == 0 ) ? '<br />' : '';
+    $i++;
+  }
 }
 
 ?>

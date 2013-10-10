@@ -18,7 +18,7 @@ if ( !defined( 'PUN' ) )
 }
 
 // Plugin version
-define( 'PLUGIN_VERSION', '1.0' );
+define( 'PLUGIN_VERSION', '0.2.3' );
 
 // Define the PLUGIN_URL
 define( 'PLUGIN_URL', pun_htmlspecialchars( get_base_url( true ) ).'/admin_loader.php?plugin=AP_Topic_Icons.php' );
@@ -64,8 +64,9 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 if ( isset( $_POST['set_options'] ) )
 {
   $ti_config = array(
-    'icons_in_a_row'      =>  !empty( $_POST['icons_in_a_row'] ) ? intval( $_POST['icons_in_a_row'] ) : '0',
-    'allowed_extensions'  =>  explode( ",", $_POST['allowed_extensions'] ),
+    'icons_in_a_row'        =>  !empty( $_POST['icons_in_a_row'] ) ? intval( $_POST['icons_in_a_row'] ) : '0',
+    'allowed_extensions'    =>  explode( ",", $_POST['allowed_extensions'] ),
+    'guests_can_add_icon'   =>  !empty( $_POST['guests_can_add_icon'] ) ? intval( $_POST['guests_can_add_icon'] ) : '0',
   );
 
   if ( serialize( $ti_config ) != $pun_config['o_topic_icon'] )
@@ -318,6 +319,15 @@ else
             </td>
             <td>
               <input type="text" id="allowed_extensions" name="allowed_extensions" value="<?php echo pun_htmlspecialchars( implode( ",", $ti_config['allowed_extensions'] ) ) ?>" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="guests_can_add_icon"><?php echo $lang_ti['guests can add icon'] ?></label>
+            </td>
+            <td>
+              <input type="radio" id="guests_can_add_icon" name="guests_can_add_icon" value="1"<?php echo intval( $ti_config['guests_can_add_icon'] ) == '1' ? ' checked="checked"' : '' ?> /><?php echo $lang_ti['yes'] ?>
+              <input type="radio" id="guests_can_add_icon" name="guests_can_add_icon" value="0"<?php echo intval( $ti_config['guests_can_add_icon'] ) == '0' ? ' checked="checked"' : '' ?> /><?php echo $lang_ti['no'] ?>
             </td>
           </tr>
         </table>

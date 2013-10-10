@@ -45,6 +45,9 @@ $lang_ti = array(
 'delete icon'                             =>  'Icoon verwijderen',
 'cannot delete file'                      =>  'Je bestand is alleen lezen, kan dit bestand niet verwijderen.<br />Je zult hem zelf moeten verwijderen.<br />Je kunt het bestand vinden in "<strong>plugins/topic-icon/icons</strong>".',
 'allowed_extensions'                      =>  'Toegestane extensies, komma\'s gescheiden',
+'guests can add icon'                     =>  'Gasten kunnen icoon toevoegen',
+'yes'                                     =>  'Ja',
+'no'                                      =>  'Nee',
 'save options'                            =>  'Opties opslaan',
 'data saved'                              =>  'Je opties zijn opgeslagen',
 

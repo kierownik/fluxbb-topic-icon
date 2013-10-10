@@ -13,7 +13,7 @@
 
 // Some info about your mod.
 $mod_title      = 'Topic Icon';
-$mod_version    = '1.0';
+$mod_version    = '0.2.3';
 $release_date   = '2013-mm-dd';
 $author         = 'Daniel Rokven';
 $author_email   = 'rokven@gmail.com';
@@ -119,8 +119,9 @@ function install()
   {
     // Begin add options to the config table
     $ti_options = array(
-      'icons_in_a_row'      => 10,
-      'allowed_extensions'  => array( 'jpg', 'jpeg', 'png', 'gif' ),
+      'icons_in_a_row'        => 10,
+      'allowed_extensions'    => array( 'jpg', 'jpeg', 'png', 'gif' ),
+      'guests_can_add_icon'  =>  0,
     );
 
     // Serialize the new config

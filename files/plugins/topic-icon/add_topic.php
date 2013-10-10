@@ -46,26 +46,44 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 // Unserialize the $pun_config['o_topic_icon'] to get all the options
 $ti_config = unserialize( $pun_config['o_topic_icon'] );
 
-// Check to see that there is not 0 in the database
-if ( empty( $ti_config['icons_in_a_row'] ) )
+if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_guest'] )
 {
-  $ti_config['icons_in_a_row'] = '10';
-}
-?>
 
-<label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
-<input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
-<?php
-$i = 1;
-foreach ( $topic_icons AS $key => $value )
-{
   ?>
 
-		<input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
-    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
+  <label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
+  <input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
 
   <?php
-  echo ( $i % intval( $ti_config['icons_in_a_row'] ) == 0 ) ? '<br />' : '';
-  $i++;
+
+  // Check to see if there is not 0 in the database
+  if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
+  {
+    $i = 1;
+  }
+
+  foreach ( $topic_icons AS $key => $value )
+  {
+
+    ?>
+
+    <input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
+    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
+
+    <?php
+
+    // Check how many icons in a row have to be
+    // when 0 then everything should be in 1 row
+    if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
+    {
+      echo ( $i % intval( $ti_config['icons_in_a_row'] ) == 0 ) ? '<br />' : '';
+      $i++;
+    }
+  }
 }
-  ?>
+else
+{
+  echo '<input type="hidden" name="icon_id" value="0" />';
+}
+
+?>

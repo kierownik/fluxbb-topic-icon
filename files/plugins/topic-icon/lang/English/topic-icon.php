@@ -45,6 +45,9 @@ $lang_ti = array(
 'delete icon'                             =>  'Delete icon',
 'cannot delete file'                      =>  'Your file is read-only, cannot delete the file.<br />You have to delete the file yourself.<br />You can find it in "<strong>plugins/topic-icon/icons</strong>".',
 'allowed_extensions'                      =>  'Allowed extensions, comma separated',
+'guests can add icon'                     =>  'Guests can add icon',
+'yes'                                     =>  'Yes',
+'no'                                      =>  'No',
 'save options'                            =>  'Save options',
 'data saved'                              =>  'Your data has been saved',
 
