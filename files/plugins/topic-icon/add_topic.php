@@ -45,6 +45,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 
 // Unserialize the $pun_config['o_topic_icon'] to get all the options
 $ti_config = unserialize( $pun_config['o_topic_icon'] );
+$guest_add_icon = intval( $ti_config['guests_can_add_icon'] );
 
 if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_guest'] )
 {
