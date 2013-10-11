@@ -2,7 +2,7 @@
 ##
 ##        Mod title:  Topic Icon 
 ##
-##      Mod version:  0.2.4 
+##      Mod version:  0.2.5 
 ##   Works on PunBB:  1.5.4, 1.5.3 
 ##     Release date:  2013-MM-DD 
 ##           Author:  Daniel Rokven(rokven@gmail.com) 
@@ -228,7 +228,7 @@ $result = $db->query('SELECT id, poster, topic_icon, subject,
       $icon = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon ) AND $icon != '' )
-        $subject .= $icon.$subject;
+        $subject = $icon.$subject;
 
 #
 #---------[ 28. OPEN ]---------------------------------------------------
@@ -547,7 +547,7 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
       $icon = ( ( isset( $cur_search['topic_icon'] ) AND ( $cur_search['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_search['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_search['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon ) AND $icon != '' )
-        $subject .= $icon.$subject;
+        $subject = $icon.$subject;
 
 #
 #---------[ 70. OPEN ]---------------------------------------------------
@@ -618,7 +618,7 @@ $topic_count = 0;
       $icon = ( ( isset( $cur_topic['topic_icon'] ) AND ( $cur_topic['topic_icon'] == '0' ) ) OR !array_key_exists( $cur_topic['topic_icon'], $topic_icons ) ) ? '' : '<img src="'.pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $topic_icons[$cur_topic['topic_icon']]['filename'] ).'" alt="" /> ';
 
       if ( isset( $icon ) AND $icon != '' )
-        $subject .= $icon.$subject;
+        $subject = $icon.$subject;
 
 #
 #---------[ 79. OPEN ]---------------------------------------------------

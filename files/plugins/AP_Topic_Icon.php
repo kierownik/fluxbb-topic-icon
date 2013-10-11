@@ -18,7 +18,7 @@ if ( !defined( 'PUN' ) )
 }
 
 // Plugin version
-define( 'PLUGIN_VERSION', '0.2.4' );
+define( 'PLUGIN_VERSION', '0.2.5' );
 
 // Define the PLUGIN_URL
 define( 'PLUGIN_URL', pun_htmlspecialchars( get_base_url( true ) ).'/admin_loader.php?plugin=AP_Topic_Icon.php' );
