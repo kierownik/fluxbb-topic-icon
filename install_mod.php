@@ -119,7 +119,7 @@ function install()
   {
     // Begin add options to the config table
     $ti_options = array(
-      'icons_in_a_row'        => 10,
+      'icons_in_a_row'        => 14,
       'allowed_extensions'    => array( 'jpg', 'jpeg', 'png', 'gif' ),
       'guests_can_add_icon'  =>  0,
     );
