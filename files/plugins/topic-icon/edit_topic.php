@@ -50,7 +50,7 @@ if ( $icon_id != '0' AND !array_key_exists( $icon_id, $topic_icons ) )
 
 ?>
 
-<input type="radio" name="icon_id" value="0"<?php echo $icon_id == '0' ? ' checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?><br />
+<input type="radio" name="icon_id" value="0"<?php echo $icon_id == '0' ? ' checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?>
 
 <?php
 

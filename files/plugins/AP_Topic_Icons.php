@@ -307,10 +307,10 @@ else
         <table class="blocktable" style="border-spacing:0;border-collapse:collapse;">
           <tr>
             <td>
-              <label for="icons_in_a_row"><?php echo $lang_ti['icons_in_a_row'] ?></label>
+              <label for="icons_in_a_row"><?php echo $lang_ti['icons in a row'] ?></label>
             </td>
             <td>
-              <input type="text" id="icons_in_a_row" name="icons_in_a_row" value="<?php echo pun_htmlspecialchars( $ti_config['icons_in_a_row'] ) ?>" />
+              <input type="text" id="icons_in_a_row" name="icons_in_a_row" value="<?php echo pun_htmlspecialchars( $ti_config['icons_in_a_row'] ) ?>" /> <?php echo $lang_ti['icons in a row info'] ?>
             </td>
           </tr>
           <tr>
