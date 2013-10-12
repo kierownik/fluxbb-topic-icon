@@ -13,7 +13,7 @@
 
 // Some info about your mod.
 $mod_title      = 'Topic Icon';
-$mod_version    = '0.2.5';
+$mod_version    = '0.2.6';
 $release_date   = '2013-mm-dd';
 $author         = 'Daniel Rokven';
 $author_email   = 'rokven@gmail.com';
