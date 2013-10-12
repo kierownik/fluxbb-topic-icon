@@ -23,7 +23,7 @@
 ##                    own risk. Backup your forum database and any and all
 ##                    applicable files before proceeding.
 ##
-
+##             Note:  Thanks to quy for helping me
 
 #
 #---------[ 1. UPLOAD ]---------------------------------------------------
@@ -242,10 +242,7 @@ if ( $cur_topic['topic_icon'] > '0' )
 {
   include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
   $icon = generate_topic_icon_img_markup( $cur_topic['topic_icon'] );
-  if ( !empty( $icon ) )
-  {
-    $subject = $icon.$subject;
-  }
+  $subject = generate_topic_icon_img_markup( $cur_topic['topic_icon'] ).$subject;
 }
 #
 #---------[ 32. OPEN ]---------------------------------------------------
@@ -540,10 +537,7 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
       {
         include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
         $icon = generate_topic_icon_img_markup( $cur_search['topic_icon'] );
-        if ( !empty( $icon ) )
-        {
-          $subject = $icon.$subject;
-        }
+        $subject = generate_topic_icon_img_markup( $cur_search['topic_icon'] ).$subject;
       }
 
 #
@@ -617,10 +611,7 @@ $topic_count = 0;
         include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
         $icon = generate_topic_icon_img_markup( $cur_topic['topic_icon'] );
 
-        if ( !empty( $icon ) )
-        {
-          $subject = $icon.$subject;
-        }
+        $subject = generate_topic_icon_img_markup( $cur_topic['topic_icon'] ).$subject;
       }
 
 #
