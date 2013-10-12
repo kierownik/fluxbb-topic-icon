@@ -76,9 +76,9 @@ $errors = array();
 // if $_POST['topic_icon'] isset then that takes precedence over $cur_post['topic_icon']
 $icon_id = isset( $_POST['icon_id'] ) ? intval( $_POST['icon_id'] ) : $cur_post['topic_icon'];
 
-include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
 if ( $icon_id > '0' )
 {
+  include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
   $icon = generate_topic_icon_img_markup( $icon_id );
 }
 else

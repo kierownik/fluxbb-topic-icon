@@ -27,6 +27,21 @@ else
   require PUN_ROOT.'plugins/topic-icon/lang/English/topic-icon.php';
 }
 
+// Load cached topic_icon
+if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
+{
+  if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
+  {
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+  else
+  {
+    require_once PUN_ROOT.'plugins/topic-icon/cache.php';
+
+    generate_topic_icon_cache();
+    include FORUM_CACHE_DIR.'cache_topic_icon.php';
+  }
+}
 ?>
 
 <label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
