@@ -536,7 +536,6 @@ $result = $db->query('SELECT t.id AS tid, t.topic_icon, t.poster,
       if ( $cur_search['topic_icon'] > '0' )
       {
         include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
-        $icon = generate_topic_icon_img_markup( $cur_search['topic_icon'] );
         $subject = generate_topic_icon_img_markup( $cur_search['topic_icon'] ).$subject;
       }
 
@@ -580,21 +579,7 @@ $topic_count = 0;
 #---------[ 80. AFTER, ADD ]---------------------------------------------------
 #
 
-    // Load cached topic_icon
-    if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
-    {
-      if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
-      {
-        include FORUM_CACHE_DIR.'cache_topic_icon.php';
-      }
-      else
-      {
-        require_once PUN_ROOT.'plugins/topic-icon/cache.php';
-
-        generate_topic_icon_cache();
-        include FORUM_CACHE_DIR.'cache_topic_icon.php';
-      }
-    }
+    include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
 
 #
 #---------[ 81. FIND ]---------------------------------------------------
@@ -608,9 +593,6 @@ $topic_count = 0;
 
       if ( $cur_topic['topic_icon'] > '0' )
       {
-        include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
-        $icon = generate_topic_icon_img_markup( $cur_topic['topic_icon'] );
-
         $subject = generate_topic_icon_img_markup( $cur_topic['topic_icon'] ).$subject;
       }
 
