@@ -52,8 +52,8 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
 
   ?>
 
-  <label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
-  <input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?>
+  <label><?php echo $lang_ti['topic icon'] ?><br />
+  <input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?> /><?php echo $lang_ti['no icon'] ?>
 
   <?php
 
@@ -68,7 +68,7 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
 
     ?>
 
-    <input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
+    <input type="radio" name="icon_id" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" value="<?php echo $key ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?> />
     <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
 
     <?php
@@ -81,6 +81,7 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
       $i++;
     }
   }
+  echo '</label>';
 }
 else
 {

@@ -42,14 +42,15 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
     include FORUM_CACHE_DIR.'cache_topic_icon.php';
   }
 }
+
 ?>
 
-<label for="icon_id"><?php echo $lang_ti['topic icon'] ?></label>
+<label><?php echo $lang_ti['topic icon'] ?><br />
 
 <?php
 
 // Unserialize the $pun_config['o_topic_icon'] to get all the options
-$ti_config      = unserialize( $pun_config['o_topic_icon'] );
+$ti_config  = unserialize( $pun_config['o_topic_icon'] );
 
 // Check to see that there is not 0 in the database
 if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
@@ -65,7 +66,7 @@ if ( $icon_id != '0' AND !array_key_exists( $icon_id, $topic_icons ) )
 
 ?>
 
-<input type="radio" name="icon_id" value="0"<?php echo $icon_id == '0' ? ' checked="checked"' : ''; ?>><?php echo $lang_ti['no icon'] ?>
+<input type="radio" name="icon_id" value="0"<?php echo $icon_id == '0' ? ' checked="checked"' : ''; ?> /><?php echo $lang_ti['no icon'] ?>
 
 <?php
 
@@ -74,7 +75,7 @@ foreach ( $topic_icons AS $key => $value )
 
   ?>
 
-  <input type="radio" name="icon_id" value="<?php echo $key ?>"<?php echo ( !empty( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?>>
+  <input type="radio" name="icon_id" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" value="<?php echo $key ?>"<?php echo ( !empty( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?> />
   <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
 
   <?php
@@ -87,5 +88,6 @@ foreach ( $topic_icons AS $key => $value )
     $i++;
   }
 }
+echo '</label>';
 
 ?>
