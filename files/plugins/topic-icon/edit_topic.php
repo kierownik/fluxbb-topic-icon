@@ -45,7 +45,7 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 
 ?>
 
-<label><?php echo $lang_ti['topic icon'] ?><br />
+<label><?php echo $lang_ti['topic icon'] ?></label>
 
 <?php
 
@@ -88,6 +88,5 @@ foreach ( $topic_icons AS $key => $value )
     $i++;
   }
 }
-echo '</label>';
 
 ?>

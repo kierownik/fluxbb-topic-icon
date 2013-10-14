@@ -52,7 +52,7 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
 
   ?>
 
-  <label><?php echo $lang_ti['topic icon'] ?><br />
+  <label><?php echo $lang_ti['topic icon'] ?></label>
   <input type="radio" name="icon_id" value="0" <?php echo ( empty( $icon_id ) OR ( $icon_id == '0' ) ) ? 'checked="checked"' : ''; ?> /><?php echo $lang_ti['no icon'] ?>
 
   <?php
@@ -81,7 +81,6 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
       $i++;
     }
   }
-  echo '</label>';
 }
 else
 {
