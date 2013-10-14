@@ -241,7 +241,6 @@ $result = $db->query('SELECT id, poster, topic_icon, subject,
 if ( $cur_topic['topic_icon'] > '0' )
 {
   include( PUN_ROOT.'/plugins/topic-icon/generate_topic_icon_img_markup.php' );
-  $icon = generate_topic_icon_img_markup( $cur_topic['topic_icon'] );
   $subject = generate_topic_icon_img_markup( $cur_topic['topic_icon'] ).$subject;
 }
 #
