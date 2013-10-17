@@ -65,19 +65,24 @@ if ( ( $pun_user['is_guest'] AND $guest_add_icon == '1' ) OR !$pun_user['is_gues
 
   foreach ( $topic_icons AS $key => $value )
   {
+    $id             = intval( $key );
+    $base_url       = pun_htmlspecialchars( get_base_url( true ) );
+    $filename       = pun_htmlspecialchars( $value['filename'] );
+    $name           = pun_htmlspecialchars( $value['name'] );
+    $icons_in_a_row = intval( $ti_config['icons_in_a_row'] );
 
     ?>
 
-    <input type="radio" name="icon_id" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" value="<?php echo $key ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $key ) ) ? ' checked="checked"' : ''; ?> />
-    <img src="<?php echo pun_htmlspecialchars( get_base_url( true ) ).'/plugins/topic-icon/icons/'.pun_htmlspecialchars( $value['filename'] ) ?>" alt="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" title="<?php echo pun_htmlspecialchars( $value['name'] ) ?>" />
+    <input type="radio" name="icon_id" title="<?php echo $name ?>" value="<?php echo $id ?>"<?php echo ( isset( $icon_id ) AND ( $icon_id == $id ) ) ? ' checked="checked"' : ''; ?> />
+    <img src="<?php echo $base_url.'/plugins/topic-icon/icons/'.$filename ?>" alt="<?php echo $name ?>" title="<?php echo $name ?>" />
 
     <?php
 
     // Check how many icons in a row have to be
     // when 0 then everything should be in 1 row
-    if ( intval( $ti_config['icons_in_a_row'] ) != '0' )
+    if ( $icons_in_a_row != '0' )
     {
-      echo ( $i % intval( $ti_config['icons_in_a_row'] ) == 0 ) ? '<br />' : '';
+      echo ( $i % $icons_in_a_row == 0 ) ? '<br />' : '';
       $i++;
     }
   }

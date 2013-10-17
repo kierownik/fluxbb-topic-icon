@@ -2,7 +2,7 @@
 ##
 ##        Mod title:  Topic Icon 
 ##
-##      Mod version:  0.2.6 
+##      Mod version:  1.0 
 ##   Works on PunBB:  1.5.4, 1.5.3 
 ##     Release date:  2013-MM-DD 
 ##           Author:  Daniel Rokven(rokven@gmail.com) 
@@ -23,7 +23,9 @@
 ##                    own risk. Backup your forum database and any and all
 ##                    applicable files before proceeding.
 ##
-##             Note:  Thanks to quy for helping me
+##           Note 1:  Thanks to quy for helping me
+##
+##           Note 2:  Patcher compatible
 
 #
 #---------[ 1. UPLOAD ]---------------------------------------------------
@@ -307,15 +309,15 @@ $db->query('INSERT INTO '.$db->prefix.'topics (poster, topic_icon, subject, post
 #---------[ 39. FIND ]---------------------------------------------------
 #
 
-<?php if (isset($cur_posting['subject'])): ?>     <li><span>»&#160;</span><a href="viewtopic.php?id=<?php echo $tid ?>"><?php echo pun_htmlspecialchars($cur_posting['subject']) ?></a></li>
+<?php if (isset($cur_posting['subject'])): ?>			<li><span>»&#160;</span><a href="viewtopic.php?id=<?php echo $tid ?>"><?php echo pun_htmlspecialchars($cur_posting['subject']) ?></a></li>
 
 #
 #---------[ 40. REPLACE WITH ]---------------------------------------------------
 #
 
-<?php if (isset($_POST['req_subject'])): ?>     <li><span>»&#160;</span><?php echo $icon ?></li>
+<?php if (isset($_POST['req_subject'])): ?>			<li><span>»&#160;</span><?php echo $icon ?></li>
 <?php endif; ?>
-<?php if (isset($cur_posting['subject'])): ?>     <li><span>»&#160;</span><?php echo $icon ?><a href="viewtopic.php?id=<?php echo $tid ?>"><?php echo pun_htmlspecialchars($cur_posting['subject']) ?></a></li>
+<?php if (isset($cur_posting['subject'])): ?>			<li><span>»&#160;</span><?php echo $icon ?><a href="viewtopic.php?id=<?php echo $tid ?>"><?php echo pun_htmlspecialchars($cur_posting['subject']) ?></a></li>
 
 #
 #---------[ 41. FIND ]---------------------------------------------------
