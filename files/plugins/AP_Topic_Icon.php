@@ -31,9 +31,13 @@ $allowed_extensions = $ti_config['allowed_extensions'];
 
 // Load the topic-icon.php language file
 if ( file_exists( PUN_ROOT.'plugins/topic-icon/lang/'.$pun_user['language'].'/topic-icon.php' ) )
+{
   require PUN_ROOT.'plugins/topic-icon/lang/'.$pun_user['language'].'/topic-icon.php';
+}
 else
+{
   require PUN_ROOT.'plugins/topic-icon/lang/English/topic-icon.php';
+}
 
 // Tell admin_loader.php that this is indeed a plugin and that it is loaded
 define( 'PUN_PLUGIN_LOADED', 1 );
@@ -47,10 +51,6 @@ if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
   }
   else
   {
-    /*if ( !defined( 'FORUM_CACHE_FUNCTIONS_LOADED' ) )
-    {
-      require_once PUN_ROOT.'include/cache.php';
-    }*/
     require_once PUN_ROOT.'plugins/topic-icon/cache.php';
 
     generate_topic_icon_cache();

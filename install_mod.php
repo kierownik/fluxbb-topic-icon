@@ -26,7 +26,9 @@ $mod_restore  = TRUE;
 
 // We want the complete error message if the script fails
 if ( !defined( 'PUN_DEBUG' ) )
+{
   define( 'PUN_DEBUG', 1 );
+}
 
 // This following function will be called when the user presses the "Install" button
 function install()
