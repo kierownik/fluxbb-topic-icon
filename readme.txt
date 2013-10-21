@@ -5,7 +5,7 @@
 ##      Mod version:  1.0 
 ##   Works on PunBB:  1.5.4, 1.5.3 
 ##     Release date:  2013-MM-DD 
-##           Author:  Daniel Rokven(rokven@gmail.com) 
+##           Author:  Daniel Rokven (rokven@gmail.com) 
 ##
 ##      Description:  Adds an icon to the first post of the topic 
 ##

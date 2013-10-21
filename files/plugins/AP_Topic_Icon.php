@@ -42,7 +42,7 @@ else
 // Tell admin_loader.php that this is indeed a plugin and that it is loaded
 define( 'PUN_PLUGIN_LOADED', 1 );
 
-/// Load cached topic_icon
+// Load cached topic_icon
 if ( !defined( 'PUN_TOPIC_ICON_LOADED') )
 {
   if ( file_exists( FORUM_CACHE_DIR.'cache_topic_icon.php' ) )
